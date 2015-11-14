@@ -1,18 +1,12 @@
-import org.marre.SmsSender;
-import org.marre.sms.SmsException;
-
 /**
  * Created by Fabienne_2 on 14/11/2015.
  */
 public class Dameuse implements Cloneable{
-   public SmsSender smsSender = SmsSender.getClickatellSender("username", "password", "apiid");
+
 
     private String nom;
     private Donnees donnees;
 
-   public void inititalize() throws IOException, SmsException {
-        smsSender.connect();
-    }
 
     public String getNom(){
         return nom;
