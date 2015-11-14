@@ -21,7 +21,7 @@ public class LesDameuses {
             this.lesDameuses.put(p_dameuse.getNom(),p_dameuse);
         } catch (Exception exeception){
             //nom de la bonne exception à chercher
-            System.out.println("La dameuse existe déjà !!");
+            System.out.println("La dameuse existe déjà !!!");
         }
     }
 }
