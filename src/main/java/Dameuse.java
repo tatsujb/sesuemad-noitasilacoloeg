@@ -1,12 +1,32 @@
+import org.marre.SmsSender;
+import org.marre.sms.SmsException;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Properties;
+
+
 /**
  * Created by Fabienne_2 on 14/11/2015.
  */
 public class Dameuse implements Cloneable{
+    public SmsSender smsSender = SmsSender.getClickatellSender("username", "password", "apiid");
 
     private String nom;
     private Donnees donnees;
 
-    public String getNom() {
+    public void inititalize() throws IOException, SmsException {
+        smsSender.connect();
+    }
+
+    public String getNom(){
         return nom;
     }
 
