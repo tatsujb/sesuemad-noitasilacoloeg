@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * Created by Fabienne_2 on 14/11/2015.
  */
@@ -10,12 +12,12 @@ public class Donnees {
     private String identifiantDameuse;
 
 
-    public Donnees(String p_date, String p_heure, String p_lattitude, String p_longitude,String p_identifiantDameuse) {
-        this.date = p_date;
-        this.heure = p_heure;
-        this.lattitude = p_lattitude;
-        this.longitude = p_longitude;
-        this.identifiantDameuse = p_identifiantDameuse;
+    public Donnees(List<String> p_donnees) {
+        this.date = p_donnees.get(0);
+        this.heure = p_donnees.get(1);
+        this.lattitude = p_donnees.get(2);
+        this.longitude = p_donnees.get(3);
+        this.identifiantDameuse = p_donnees.get(4);
     }
 
     public void setLattitude(String p_lattitude) {

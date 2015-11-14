@@ -15,7 +15,8 @@ public class Dameuse implements Cloneable{
 
     public Dameuse(String nom) {
         this.nom = nom;
-        this.donnees = new Donnees("0","0","0","0","0");
+        Traitement t = new Traitement();
+        this.donnees = new Donnees(t.traitement("0 0 0 0 0"));
     }
 
     public void setDonnees(Donnees donnees) {

@@ -10,10 +10,12 @@ import static org.junit.Assert.assertEquals;
 public class DonneesTest {
 
     private Donnees donnees;
+    private  Traitement traitement;
 
     @Before
     public void setUp() {
-        this.donnees = new Donnees("10/12/2015","12:45:12","0","0","dam1");
+
+        this.donnees = new Donnees(traitement.traitement("10/12/2015 12:45:12 0 0 dam1"));
     }
 
     @After
