@@ -24,8 +24,10 @@ public class TraitementTest {
 
     @org.junit.Test
     public void testTraiment (){
-        List<String> listChaine = traitement.traitement("145545114 44515452144411");
+        List<String> listChaine = traitement.traitement("145545114 44515452144411 10000 23");
         assertEquals(listChaine.get(0),"145545114");
         assertEquals(listChaine.get(1),"44515452144411");
+        assertEquals(listChaine.get(2),"10000");
+        assertEquals(listChaine.get(3),"23");
     }
 }
