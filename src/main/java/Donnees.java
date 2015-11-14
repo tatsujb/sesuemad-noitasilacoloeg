@@ -8,7 +8,7 @@ public class Donnees {
     private String lattitude;
     private String longitude;
     private String date;
-    private String heure;loo
+    private String heure;
     private String identifiantDameuse;
 
 
