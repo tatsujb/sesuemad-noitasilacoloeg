@@ -1,34 +1,28 @@
-import org.marre.SmsSender;
-import org.marre.sms.SmsException;
-import javax.comm.*;
-
-import javax.c
-
-import java.io.IOException;
-import java.util.Enumeration;
 import com.sun.comm.Win32Driver;
+
+import javax.comm.CommPortIdentifier;
+import java.util.Enumeration;
 
 /**
  * Created by Fabienne_2 on 14/11/2015.
  */
 public class Main {
 
-    public SmsSender smsSender = SmsSender.getClickatellSender("username", "password", "apiid");
+    //psvm
+    public static void main(String[] args) {
 
-    public void inititalize() throws IOException, SmsException {
-        smsSender.connect();
         //initialisation du driver
-        Win32Driver w32Driver= new Win32Driver();
+        Win32Driver w32Driver = new Win32Driver();
         w32Driver.initialize();
-//récupération de l'énumération
-        Enumeration portList=CommPortIdentifier.getPortIdentifiers();
-//affichage des noms des ports
+    //rï¿½cupï¿½ration de l'ï¿½numï¿½ration
+        Enumeration portList = CommPortIdentifier.getPortIdentifiers();
+    //affichage des noms des ports
         CommPortIdentifier portId;
-        while (portList.hasMoreElements()){
-            portId=(CommPortIdentifier)portList.nextElement();
+        while (portList.hasMoreElements()) {
+            portId = (CommPortIdentifier) portList.nextElement();
             System.out.println(portId.getName());
         }
     }
-
-
 }
+
+
