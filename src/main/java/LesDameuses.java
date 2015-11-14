@@ -24,4 +24,8 @@ public class LesDameuses {
             System.out.println("La dameuse existe déjà !!!");
         }
     }
+
+    public Map<String, Dameuse> getLesDameuses() {
+        return lesDameuses;
+    }
 }
