@@ -16,6 +16,7 @@ public class DonneesTest {
 
     @Before
     public void setUp() {
+        this.traitement = new Traitement();
         List<String> t = traitement.traitement("10/12/2015 12:45:12 0 0 dam1");
         this.donnees = new Donnees(t);
     }

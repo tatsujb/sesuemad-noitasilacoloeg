@@ -1,6 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by Fabienne_2 on 14/11/2015.
  */
@@ -25,6 +22,10 @@ public class Dameuse implements Cloneable{
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Donnees getDonnees() {
+        return donnees;
     }
 
     public Dameuse clone(){
