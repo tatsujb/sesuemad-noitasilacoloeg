@@ -1,6 +1,8 @@
 import org.marre.SmsSender;
 import org.marre.sms.SmsException;
 
+import javax.c
+
 import java.io.IOException;
 
 /**
@@ -13,4 +15,6 @@ public class Main {
     public void inititalize() throws IOException, SmsException {
         smsSender.connect();
     }
+
+
 }
