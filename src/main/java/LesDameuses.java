@@ -28,4 +28,13 @@ public class LesDameuses {
     public Map<String, Dameuse> getLesDameuses() {
         return lesDameuses;
     }
+
+    @Override
+    public String toString() {
+        String resultat = "";
+        for (Dameuse d : this.lesDameuses.values()){
+            resultat += d.toString()+"\n";
+        }
+        return resultat;
+    }
 }
