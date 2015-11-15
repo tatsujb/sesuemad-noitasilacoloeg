@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.List;
 
 /**
  * Created by Fabienne_2 on 14/11/2015.
@@ -50,8 +51,14 @@ public class Dameuse {
     }
 
     public void lireLhistorique () throws IOException {
-        Files.readAllLines(this.fichier);
+
+        List<String> ligne = Files.readAllLines(this.fichier);
+
+        for (String l : ligne){
+            System.out.println(l);
+        }
     }
+
     @Override
     public String toString() {
 

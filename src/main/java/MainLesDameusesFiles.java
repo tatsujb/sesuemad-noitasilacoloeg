@@ -30,6 +30,12 @@ public class MainLesDameusesFiles {
             dameuse2.ecrireDansLhistorique();
             i++;
         }while (i <5);
-        System.out.println(lesDameuses);
+        dameuse1.lireLhistorique();
+        System.out.println();
+        dameuse2.lireLhistorique();
+        System.out.println();
+        dameuse3.lireLhistorique();
+        System.out.println();
+
     }
 }
