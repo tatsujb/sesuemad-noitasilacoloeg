@@ -25,11 +25,12 @@ public class LesDameusesTest {
     public void testAjouterDameuse() throws Exception {
         Traitement traitement = new Traitement();
         Donnees donnees = new Donnees(traitement.traitement("22/12/2015 12:45:12 0 0 dam1"));
-        Dameuse dameuse = new Dameuse("dam1");
+        Donnees donnees1 = new Donnees(traitement.traitement("22/12/2015 12:45:12 0 0 dam2"));
+        Dameuse dameuse = new Dameuse(donnees);
         dameuse.setDonnees(donnees);
         this.lesDameuses.ajouterDameuse(dameuse);
         assertEquals(this.lesDameuses.getLesDameuses().size(),1);
-        Dameuse dameuse2 = new Dameuse("dam2");
+        Dameuse dameuse2 = new Dameuse(donnees1);
         this.lesDameuses.ajouterDameuse(dameuse2);
         assertEquals(this.lesDameuses.getLesDameuses().size(),2);
     }

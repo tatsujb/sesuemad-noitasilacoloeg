@@ -9,33 +9,29 @@ public class MainLesDameusesFiles {
 
         Traitement t = new Traitement();
         Donnees donnees = new Donnees(t.traitement("125 489 674 233 dam1"));
-        Dameuse dameuse1 = new Dameuse("dam1");
-        dameuse1.setDonnees(donnees);
-        Dameuse dameuse2  = new Dameuse(("dam2"));
+        Dameuse dameuse1 = new Dameuse(donnees);
         Donnees donnees1 = new Donnees(t.traitement("111 111 222 222 dam2"));
-        dameuse2.setDonnees(donnees1);
-        Dameuse dameuse3  = new Dameuse(("dam3"));
+        Dameuse dameuse2  = new Dameuse((donnees1));
         Donnees donnees3 = new Donnees(t.traitement("555 551 222 222 dam3"));
-        dameuse3.setDonnees(donnees3);
+        Dameuse dameuse3  = new Dameuse(donnees3);
 
         LesDameuses lesDameuses = new LesDameuses();
         lesDameuses.ajouterDameuse(dameuse1);
         lesDameuses.ajouterDameuse(dameuse2);
         lesDameuses.ajouterDameuse(dameuse3);
+        lesDameuses.ajouterDameuse(dameuse1);
+        lesDameuses.ajouterDameuse(dameuse1);
+        lesDameuses.ajouterDameuse(dameuse1);
+        lesDameuses.ajouterDameuse(dameuse2);
+        lesDameuses.ajouterDameuse(dameuse1);
+        lesDameuses.ajouterDameuse(dameuse3);
 
-
-        int i = 0;
-        do {
-            dameuse1.ecrireDansLhistorique();
-            dameuse2.ecrireDansLhistorique();
-            i++;
-        }while (i <5);
         dameuse1.lireLhistorique();
         System.out.println();
         dameuse2.lireLhistorique();
         System.out.println();
         dameuse3.lireLhistorique();
-        System.out.println();
+        System.out.println(lesDameuses.getLesDameuses().size());
 
     }
 }

@@ -13,11 +13,15 @@ import static org.junit.Assert.*;
 public class DameuseTest {
 
     private Dameuse dameuse;
+    private Traitement traitement;
+    private Donnees donnees;
 
     @Before
     public void setUp() throws IOException {
+        traitement = new Traitement();
+        this.donnees = new Donnees(traitement.traitement("22/12/2015 12:45:12 0 0 dam1"));
+        this.dameuse = new Dameuse(this.donnees);
 
-        this.dameuse = new Dameuse("dam1");
     }
 
     @After
@@ -33,10 +37,8 @@ public class DameuseTest {
 
     @Test
     public void testSetDonnees() {
-        Traitement traitement = new Traitement();
-        Donnees donnees = new Donnees(traitement.traitement("22/12/2015 12:45:12 0 0 dam1"));
-        this.dameuse.setDonnees(donnees);
-        assertEquals(this.dameuse.getDonnees().toString(),"22/12/2015 12:45:12 0 0 dam1");
+
+        assertEquals(this.dameuse.getDonnees().toString(),"0 0 0 0 0");
 
         Donnees donnees1 = new Donnees(traitement.traitement("28/12/2015 12:45:12 0 0 dam1"));
         this.dameuse.setDonnees(donnees1);

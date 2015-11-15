@@ -3,7 +3,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.List;
 
 /**
  * Created by Fabienne_2 on 14/11/2015.
@@ -20,8 +19,8 @@ public class Dameuse {
         return nom;
     }
 
-    public Dameuse(String nom) throws IOException {
-        this.nom = nom;
+    public Dameuse(Donnees donnees) throws IOException {
+        this.nom = donnees.getIdentifiantDameuse();
         Traitement t = new Traitement();
         this.donnees = new Donnees(t.traitement("0 0 0 0 0"));
         creationFichier(nom);
@@ -52,9 +51,7 @@ public class Dameuse {
 
     public void lireLhistorique () throws IOException {
 
-        List<String> ligne = Files.readAllLines(this.fichier);
-
-        for (String l : ligne){
+        for (String l : Files.readAllLines(this.fichier)){
             System.out.println(l);
         }
     }

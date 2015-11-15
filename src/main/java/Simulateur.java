@@ -29,8 +29,8 @@ public class Simulateur {
 
 
     private SimulateurVariables var;
-    public Simulateur(SimulateurVariables variables){
-        this.var = variables;
+    public Simulateur(){
+        this.var = new SimulateurVariables(1,1,2015,0,0,0);
     }
 
     public String dateAlleatoire(){
@@ -56,7 +56,6 @@ public class Simulateur {
         }else{
             smonth = String.valueOf(var.getMonth());
         }
-
         return ladate.concat(sday +"/"+ smonth +"/"+ var.getYear());
     }
 
@@ -106,20 +105,20 @@ public class Simulateur {
         return (minLon + (maxLon - minLon) * rand4.nextDouble());
     }
 
-    public void faireDonneesAlleatoires() throws IOException{
+    public String faireDonneesAlleatoires() throws IOException{
         Random rand5 = new Random();
-        Dameuse d1 = new Dameuse("DAM01");
-        Dameuse d2 = new Dameuse("DAM02");
-        Dameuse d3 = new Dameuse("DAM03");
+        Traitement simTraitement = new Traitement();
+        Dameuse d1 = new Dameuse(new Donnees(simTraitement.traitement("0 0 0 0 dam1")));
+        Dameuse d2 = new Dameuse(new Donnees(simTraitement.traitement("0 0 0 0 dam2")));
+        Dameuse d3 = new Dameuse(new Donnees(simTraitement.traitement("0 0 0 0 dam3")));
         listeDameuses.add(d1);
         listeDameuses.add(d2);
         listeDameuses.add(d3);
-        Dameuse DameuseRandom = listeDameuses.get(rand5.nextInt(3)); //choisi alléatoirement parmis les dameuses quel que soit leur nombre
-        Traitement simTraitement = new Traitement();
-        Donnees donnees = new Donnees(simTraitement.traitement(dateAlleatoire()+" "+heureAlleatoire()+" "+ latitudeAlleatoire() + " " + latitudeAlleatoire() + " " + DameuseRandom.getNom()));  //leur attribue des données alléatoires
-        DameuseRandom.setDonnees(donnees);
-        System.out.println(donnees.toString());
+        Dameuse DameuseRandom = listeDameuses.get(rand5.nextInt(3)); //choisi allï¿½atoirement parmis les dameuses quel que soit leur nombre
 
+        Donnees donnees = new Donnees(simTraitement.traitement(dateAlleatoire()+" "+heureAlleatoire()+" "+ latitudeAlleatoire() + " " + latitudeAlleatoire() + " " + DameuseRandom.getNom()));  //leur attribue des donnï¿½es allï¿½atoires
+        DameuseRandom.setDonnees(donnees);
+        return donnees.toString();
     }
 
 }

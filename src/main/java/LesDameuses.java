@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,17 +14,19 @@ public class LesDameuses {
         this.lesDameuses = new HashMap<String, Dameuse>();
     }
 
-    public void ajouterDameuse (Dameuse p_dameuse) throws IllegalArgumentException{
+    public void ajouterDameuse (Dameuse p_dameuse) throws IllegalArgumentException, IOException {
         if (p_dameuse == null)
             throw new IllegalArgumentException("Paramètre invalide, dameuse erronée");
 
-        try {
             this.lesDameuses.put(p_dameuse.getNom(),p_dameuse);
-        } catch (Exception exeception){
-            //nom de la bonne exception à chercher
-            System.out.println("La dameuse existe déjà !!!");
-        }
+            p_dameuse.ecrireDansLhistorique();
+
     }
+
+    /*private int dameuseExiste (Dameuse p_dameuse){
+        List<Dameuse> listeDameuse = (List<Dameuse>) this.lesDameuses.values();
+        return listeDameuse.indexOf(p_dameuse);
+    }*/
 
     public Map<String, Dameuse> getLesDameuses() {
         return lesDameuses;
