@@ -1,9 +1,11 @@
+import java.io.IOException;
+
 /**
  * Created by fabienne on 14/11/15.
  */
 public class MainOfficiel {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Traitement t = new Traitement();
         Donnees donnees = new Donnees(t.traitement("125 489 674 233 479"));
@@ -16,6 +18,7 @@ public class MainOfficiel {
         LesDameuses lesDameuses = new LesDameuses();
         lesDameuses.ajouterDameuse(dameuse1);
         lesDameuses.ajouterDameuse(dameuse2);
+        dameuse1.ecrireDansLhistorique();
         System.out.println(lesDameuses);
     }
 }

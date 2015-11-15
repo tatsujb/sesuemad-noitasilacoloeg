@@ -20,7 +20,8 @@ public class Dameuse implements Cloneable{
     }
 
     public Dameuse(String nom) {
-        this.fichier = Paths.get("files","Historique",nom+".txt");
+        this.fichier = Paths.get("./Historique/"+nom+".txt");
+        //Files.write(fichier,)
         this.nom = nom;
         Traitement t = new Traitement();
         this.donnees = new Donnees(t.traitement("0 0 0 0 0"));
@@ -49,9 +50,9 @@ public class Dameuse implements Cloneable{
     }
 
 
-    public void écrireDansLhistorique (String p_message) throws IOException {
+    public void ecrireDansLhistorique () throws IOException {
 
-        Files.write(fichier,p_message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
+        Files.write(fichier,this.toString().getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
     }
 
     @Override
