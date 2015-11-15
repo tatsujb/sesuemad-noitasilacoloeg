@@ -9,7 +9,7 @@ public class Simulateur {
 
     //public rand
     private Random random = new Random();
-    SimulateurVariables var = new SimulateurVariables(1,1,2015,0,0,0);
+    SimulateurVariables var = new SimulateurVariables(1,1,2015,0,10,0);
 
 
 
@@ -113,9 +113,9 @@ public class Simulateur {
         listeDameuses.add(d1);
         listeDameuses.add(d2);
         listeDameuses.add(d3);
-        Dameuse DameuseRandom = listeDameuses.get((int) Math.random() * listeDameuses.size()); //choisi alléatoirement parmis les dameuses quel que soit leur nombre
+        Dameuse DameuseRandom = listeDameuses.get((int) Math.random() * listeDameuses.size()); //choisi allï¿½atoirement parmis les dameuses quel que soit leur nombre
         Traitement simTraitement = new Traitement();
-        Donnees donnees = new Donnees(simTraitement.traitement(dateAlleatoire()+" "+heureAlleatoire()+" "+ latitudeAlleatoire() + " " + latitudeAlleatoire() + " " + DameuseRandom.getNom()));  //leur attribue des données alléatoires
+        Donnees donnees = new Donnees(simTraitement.traitement(dateAlleatoire()+" "+heureAlleatoire()+" "+ latitudeAlleatoire() + " " + latitudeAlleatoire() + " " + DameuseRandom.getNom()));  //leur attribue des donnï¿½es allï¿½atoires
         DameuseRandom.setDonnees(donnees);
         System.out.println(donnees.toString());
 
