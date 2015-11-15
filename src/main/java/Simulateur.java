@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -24,12 +25,13 @@ public class Simulateur {
     int month = 0;
     int year = 2015;
 
-    Dameuse d1 = new Dameuse("DAM01");
-    Dameuse d2 = new Dameuse("DAM02");
-    Dameuse d3 = new Dameuse("DAM03");
+
 
     ArrayList<Dameuse> listeDameuses = new ArrayList<Dameuse>(); //liste de dammeuses on pourrai aussi randomiser leur nombre mais ici on teste avec 3
-    public Simulateur(Dameuse d1, Dameuse d2, Dameuse d3){
+    public Simulateur() throws IOException {
+        Dameuse d1 = new Dameuse("DAM01");
+        Dameuse d2 = new Dameuse("DAM02");
+        Dameuse d3 = new Dameuse("DAM03");
         listeDameuses.add(d1);
         listeDameuses.add(d2);
         listeDameuses.add(d3);
@@ -62,6 +64,7 @@ public class Simulateur {
         }else{
         heure = random.nextInt(MXheures);
         }
+
         return tr.concat(heure +":"+ minute +":"+ seconde);
     }
 
