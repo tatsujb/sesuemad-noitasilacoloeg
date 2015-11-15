@@ -9,7 +9,11 @@ import java.util.concurrent.TimeUnit;
 public class MainSimulateur {
 
     public static void main(String[] args) {
-        final Simulateur simulateur = new Simulateur();
+
+
+        final SimulateurVariables var = new SimulateurVariables(1,1,2015,0,0,0);
+
+        final Simulateur simulateur = new Simulateur(var);
 
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         Runnable sendNewDameuseInfo = null;
@@ -26,7 +30,7 @@ public class MainSimulateur {
                 }
             }
         };
-        executor.scheduleAtFixedRate(sendNewDameuseInfo, 0, 3, TimeUnit.SECONDS); //Nombre de secondes d'intervale d'excecution. ici 3
+        executor.scheduleAtFixedRate(sendNewDameuseInfo, 0, 1, TimeUnit.SECONDS); //Nombre de secondes d'intervale d'excecution. ici 3
 
     }
 }
