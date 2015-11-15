@@ -20,6 +20,7 @@ public class MainLesDameusesFiles {
         lesDameuses.ajouterDameuse(dameuse2);
         lesDameuses.ajouterDameuse(dameuse3);
         lesDameuses.ajouterDameuse(dameuse1);
+        dameuse1.setDonnees(new Donnees(t.traitement("999 999 999 999 dam1")));
         lesDameuses.ajouterDameuse(dameuse1);
         lesDameuses.ajouterDameuse(dameuse1);
         lesDameuses.ajouterDameuse(dameuse2);

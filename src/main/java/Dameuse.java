@@ -22,7 +22,7 @@ public class Dameuse {
     public Dameuse(Donnees donnees) throws IOException {
         this.nom = donnees.getIdentifiantDameuse();
         Traitement t = new Traitement();
-        this.donnees = new Donnees(t.traitement("0 0 0 0 0"));
+        this.setDonnees(donnees);
         creationFichier(nom);
     }
 
