@@ -112,7 +112,7 @@ public class Simulateur {
         Traitement simTraitement = new Traitement();
         Donnees donnees = new Donnees(simTraitement.traitement(dateAlleatoire()+" "+heureAlleatoire()+" "+ latitudeAlleatoire() + " " + latitudeAlleatoire() + " " + DameuseRandom.getNom()));  //leur attribue des données alléatoires
         DameuseRandom.setDonnees(donnees);
-        System.out.println(donnees);
+        System.out.println(donnees.toString());
 
     }
 
