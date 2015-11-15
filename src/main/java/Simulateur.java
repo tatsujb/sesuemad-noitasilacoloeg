@@ -9,25 +9,30 @@ public class Simulateur {
 
     //public rand
     private Random random = new Random();
+    SimulateurVariables var = new SimulateurVariables(1,1,2015,0,0,0);
 
+
+
+    //variables fixes pour la date randomisee
+    private int day = 1;
+    private int month = 1;
+    private int year = 2015;
     //variables fixes pour l'heure randomisee
-    private int MXsecondes = 60;
-    private int MXminutes = 60;
-    private int MXheures = 12;
     private int seconde = 0;
     private int minute = 0;
     private int heure = 0;
-    //variables fixes pour la date randomisee
+
+    private int MXsecondes = 60;
+    private int MXminutes = 60;
+    private int MXheures = 12;
+
     private int MXdays = 30;
     private int MXmonths = 12;
     private int MXyears = 2090;
-    private int day = 0;
-    private int month = 0;
-    private int year = 2015;
-    //variables fixes pour la latitude
+    //variables randomisees pour la latitude
     private double minLat = -90;
     private double maxLat = +90;
-    //variables fixes pour la longitude
+    //variables randomisees pour la longitude
     private double minLon = -180;
     private double maxLon = +180;
 
@@ -35,8 +40,8 @@ public class Simulateur {
 
     public String dateAlleatoire(){
         String ladate = ""; //00/00/00
-        String sday = "";
-        String smonth = "";
+        String sday = "01";
+        String smonth = "01";
         if(day < MXdays){
             day = random.nextInt(MXdays);
         } else if(month < MXmonths){
@@ -45,12 +50,12 @@ public class Simulateur {
             year = random.nextInt(MXyears);
         }
         if (day < 10){
-            sday.format("%0", day);
+            sday.format("%01d", day);
         }else{
             sday = String.valueOf(day);
         }
         if (month < 10){
-            smonth.format("%0", month);
+            smonth.format("%01d", month);
         }else{
             smonth = String.valueOf(month);
         }
@@ -60,9 +65,9 @@ public class Simulateur {
 
     public String heureAlleatoire(){
         String lheure = ""; //00:00:00
-        String sseconde = "";
-        String sminute = "";
-        String sheure = "";
+        String sseconde = "00";
+        String sminute = "00";
+        String sheure = "00";
         if(heure == MXheures){
             int seconde = 0;
             int minute = 0;
@@ -75,17 +80,17 @@ public class Simulateur {
         heure = random.nextInt(MXheures);
         }
         if (seconde < 10){
-            sseconde.format("%0", seconde);
+            sseconde.format("%01d", seconde);
         }else{
             sseconde = String.valueOf(seconde);
         }
         if (minute < 10){
-            sminute.format("%0", minute);
+            sminute.format("%01d", minute);
         }else{
             sminute = String.valueOf(minute);
         }
         if (heure < 10){
-            sheure.format("%0", heure);
+            sheure.format("%01d", heure);
         }else{
             sheure = String.valueOf(heure);
         }
