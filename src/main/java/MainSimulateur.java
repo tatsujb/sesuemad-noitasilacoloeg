@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class MainSimulateur {
 
     public static void main(String[] args) {
+        final Simulateur simulateur = new Simulateur();
 
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         Runnable sendNewDameuseInfo = null;
@@ -16,7 +17,8 @@ public class MainSimulateur {
         sendNewDameuseInfo = new Runnable() {
             @Override
             public void run() {
-                Simulateur simulateur = new Simulateur();
+
+
                 try {
                     simulateur.faireDonneesAlleatoires();
                 } catch (IOException e) {

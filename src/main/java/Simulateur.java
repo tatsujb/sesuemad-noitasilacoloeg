@@ -9,25 +9,30 @@ public class Simulateur {
 
     //public rand
     private Random random = new Random();
+    SimulateurVariables var = new SimulateurVariables(1,1,2015,0,0,0);
 
-    //variables fixes pour l'heure randomisee
-    private int MXsecondes = 60;
-    private int MXminutes = 60;
-    private int MXheures = 12;
-    private int seconde = 0;
-    private int minute = 0;
-    private int heure = 0;
+
+
     //variables fixes pour la date randomisee
-    private int MXdays = 30;
-    private int MXmonths = 12;
-    private int MXyears = 2090;
     private int day = 1;
     private int month = 1;
     private int year = 2015;
-    //variables fixes pour la latitude
+    //variables fixes pour l'heure randomisee
+    private int seconde = 0;
+    private int minute = 0;
+    private int heure = 0;
+
+    private int MXsecondes = 60;
+    private int MXminutes = 60;
+    private int MXheures = 12;
+
+    private int MXdays = 30;
+    private int MXmonths = 12;
+    private int MXyears = 2090;
+    //variables randomisees pour la latitude
     private double minLat = -90;
     private double maxLat = +90;
-    //variables fixes pour la longitude
+    //variables randomisees pour la longitude
     private double minLon = -180;
     private double maxLon = +180;
 
