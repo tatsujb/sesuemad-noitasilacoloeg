@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -11,15 +12,22 @@ public class MainSimulateur {
 
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         Runnable sendNewDameuseInfo = null;
-        executor.scheduleAtFixedRate(sendNewDameuseInfo, 0, 3, TimeUnit.SECONDS); //Nombre de secondes d'intervale d'éxcecution. ici 3
-
 
         sendNewDameuseInfo = new Runnable() {
             @Override
             public void run() {
-                Simulateur.faireDonneesAlleatoires();
+                Simulateur simulateur = new Simulateur();
+                try {
+                    simulateur.faireDonneesAlleatoires();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         };
+        executor.scheduleAtFixedRate(sendNewDameuseInfo, 0, 3, TimeUnit.SECONDS); //Nombre de secondes d'intervale d'ï¿½xcecution. ici 3
+
+
+
 
     }
 
