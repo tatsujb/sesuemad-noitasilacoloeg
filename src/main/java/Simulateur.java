@@ -30,7 +30,7 @@ public class Simulateur {
     ArrayList<Dameuse> listeDameuses = new ArrayList<Dameuse>(); //liste de dammeuses on pourrai aussi randomiser leur nombre mais ici on teste avec 3
 
     public String dateAlleatoire(){
-        String tr = "0/0/2015";
+        String ladate = ""; //00:00:00
 
         if(day < MXdays){
             day = random.nextInt(MXdays);
@@ -40,11 +40,11 @@ public class Simulateur {
             year = random.nextInt(MXyears);
         }
 
-        return tr.concat(day +"/"+ month +"/"+ year);
+        return ladate.concat(day +"/"+ month +"/"+ year);
     }
 
     public String heureAlleatoire(){
-        String tr = "00:00:00";
+        String lheure = ""; //00:00:00
 
         if(heure == MXheures){
             int seconde = 0;
@@ -58,7 +58,7 @@ public class Simulateur {
         heure = random.nextInt(MXheures);
         }
 
-        return tr.concat(heure +":"+ minute +":"+ seconde);
+        return lheure.concat(heure +":"+ minute +":"+ seconde);
     }
 
 
