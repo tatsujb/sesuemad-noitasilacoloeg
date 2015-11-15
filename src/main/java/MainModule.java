@@ -6,7 +6,7 @@ import java.util.Enumeration;
 /**
  * Created by Fabienne_2 on 14/11/2015.
  */
-public class Main {
+public class MainModule {
 
     //psvm
     public static void main(String[] args) {

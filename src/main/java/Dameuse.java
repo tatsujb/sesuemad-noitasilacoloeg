@@ -7,7 +7,7 @@ import java.nio.file.StandardOpenOption;
 /**
  * Created by Fabienne_2 on 14/11/2015.
  */
-public class Dameuse implements Cloneable{
+public class Dameuse {
 
 
     private String nom;
@@ -19,40 +19,34 @@ public class Dameuse implements Cloneable{
         return nom;
     }
 
-    public Dameuse(String nom) {
-        this.fichier = Paths.get("./Historique/"+nom+".txt");
-        //Files.write(fichier,)
+    public Dameuse(String nom) throws IOException {
         this.nom = nom;
         Traitement t = new Traitement();
         this.donnees = new Donnees(t.traitement("0 0 0 0 0"));
+        creationFichier(nom);
     }
+
+    private void creationFichier(String nom) throws IOException {
+        this.fichier = Paths.get("./src/Historiques/"+nom+".txt");
+        String message = "Historique "+nom+" \n\n";
+        Files.write(fichier,message.getBytes());
+    }
+
 
     public void setDonnees(Donnees donnees) {
         this.donnees = donnees;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
 
     public Donnees getDonnees() {
         return donnees;
     }
 
-    public Dameuse clone(){
-        Dameuse d = null;
-        try {
-            d = (Dameuse) super.clone();
-        }catch (CloneNotSupportedException e){
-            e.printStackTrace();
-        }
-        return  d;
-    }
-
 
     public void ecrireDansLhistorique () throws IOException {
 
-        Files.write(fichier,this.toString().getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
+        String message = this.toString()+"\n";
+        Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
     }
 
     @Override
