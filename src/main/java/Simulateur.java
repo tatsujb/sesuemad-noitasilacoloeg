@@ -45,12 +45,12 @@ public class Simulateur {
             year = random.nextInt(MXyears);
         }
         if (day < 10){
-            sday.format("%0", day);
+            sday.format("%01d", day);
         }else{
             sday = String.valueOf(day);
         }
         if (month < 10){
-            smonth.format("%0", month);
+            smonth.format("%01d", month);
         }else{
             smonth = String.valueOf(month);
         }
@@ -75,17 +75,17 @@ public class Simulateur {
         heure = random.nextInt(MXheures);
         }
         if (seconde < 10){
-            sseconde.format("%0", seconde);
+            sseconde.format("%01d", seconde);
         }else{
             sseconde = String.valueOf(seconde);
         }
         if (minute < 10){
-            sminute.format("%0", minute);
+            sminute.format("%01d", minute);
         }else{
             sminute = String.valueOf(minute);
         }
         if (heure < 10){
-            sheure.format("%0", heure);
+            sheure.format("%01d", heure);
         }else{
             sheure = String.valueOf(heure);
         }
