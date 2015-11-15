@@ -25,10 +25,5 @@ public class MainSimulateur {
             }
         };
         executor.scheduleAtFixedRate(sendNewDameuseInfo, 0, 3, TimeUnit.SECONDS); //Nombre de secondes d'intervale d'�xcecution. ici 3
-
-
-
-
     }
-
-    }
+}

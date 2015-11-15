@@ -8,30 +8,31 @@ import java.util.Random;
 public class Simulateur {
 
     //public rand
-    Random random = new Random();
+    private Random random = new Random();
 
     //variables fixes pour l'heure randomisee
-    int MXsecondes = 60;
-    int MXminutes = 60;
-    int MXheures = 12;
-    int seconde = 0;
-    int minute = 0;
-    int heure = 0;
+    private int MXsecondes = 60;
+    private int MXminutes = 60;
+    private int MXheures = 12;
+    private int seconde = 0;
+    private int minute = 0;
+    private int heure = 0;
     //variables fixes pour la date randomisee
-    final int MXdays = 30;
-    final int MXmonths = 12;
-    final int MXyears = 2090;
-    int day = 0;
-    int month = 0;
-    int year = 2015;
+    private int MXdays = 30;
+    private int MXmonths = 12;
+    private int MXyears = 2090;
+    private int day = 0;
+    private int month = 0;
+    private int year = 2015;
 
 
 
     ArrayList<Dameuse> listeDameuses = new ArrayList<Dameuse>(); //liste de dammeuses on pourrai aussi randomiser leur nombre mais ici on teste avec 3
 
     public String dateAlleatoire(){
-        String ladate = ""; //00:00:00
-
+        String ladate = ""; //00/00/00
+        String sday = "";
+        String smonth = "";
         if(day < MXdays){
             day = random.nextInt(MXdays);
         } else if(month < MXmonths){
@@ -39,13 +40,25 @@ public class Simulateur {
         }else{
             year = random.nextInt(MXyears);
         }
+        if (day < 10){
+            sday.format("%0", day);
+        }else{
+            sday = String.valueOf(day);
+        }
+        if (month < 10){
+            smonth.format("%0", month);
+        }else{
+            smonth = String.valueOf(month);
+        }
 
-        return ladate.concat(day +"/"+ month +"/"+ year);
+        return ladate.concat(sday +"/"+ smonth +"/"+ year);
     }
 
     public String heureAlleatoire(){
         String lheure = ""; //00:00:00
-
+        String sseconde = "";
+        String sminute = "";
+        String sheure = "";
         if(heure == MXheures){
             int seconde = 0;
             int minute = 0;
@@ -57,10 +70,24 @@ public class Simulateur {
         }else{
         heure = random.nextInt(MXheures);
         }
+        if (seconde < 10){
+            sseconde.format("%0", seconde);
+        }else{
+            sseconde = String.valueOf(seconde);
+        }
+        if (minute < 10){
+            sminute.format("%0", minute);
+        }else{
+            sminute = String.valueOf(minute);
+        }
+        if (heure < 10){
+            sheure.format("%0", heure);
+        }else{
+            sheure = String.valueOf(heure);
+        }
 
-        return lheure.concat(heure +":"+ minute +":"+ seconde);
+        return lheure.concat(sheure +":"+ sminute +":"+ sseconde);
     }
-
 
     public void faireDonneesAlleatoires() throws IOException{
         Dameuse d1 = new Dameuse("DAM01");
