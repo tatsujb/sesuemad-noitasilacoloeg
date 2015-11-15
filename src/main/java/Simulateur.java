@@ -24,10 +24,14 @@ public class Simulateur {
     private int day = 0;
     private int month = 0;
     private int year = 2015;
+    //variables fixes pour la latitude
+    private double minLat = -90;
+    private double maxLat = +90;
+    //variables fixes pour la longitude
+    private double minLon = -180;
+    private double maxLon = +180;
 
-
-
-    ArrayList<Dameuse> listeDameuses = new ArrayList<Dameuse>(); //liste de dammeuses on pourrai aussi randomiser leur nombre mais ici on teste avec 3
+    public ArrayList<Dameuse> listeDameuses = new ArrayList<Dameuse>(); //liste de dammeuses on pourrai aussi randomiser leur nombre mais ici on teste avec 3
 
     public String dateAlleatoire(){
         String ladate = ""; //00/00/00
@@ -89,6 +93,14 @@ public class Simulateur {
         return lheure.concat(sheure +":"+ sminute +":"+ sseconde);
     }
 
+    public double latitudeAlleatoire(){
+        return (minLat + (maxLat - minLat) * random.nextDouble());
+    }
+
+    public double longitureAlleatoire(){
+        return (minLon + (maxLon - minLon) * random.nextDouble());
+    }
+
     public void faireDonneesAlleatoires() throws IOException{
         Dameuse d1 = new Dameuse("DAM01");
         Dameuse d2 = new Dameuse("DAM02");
@@ -98,7 +110,7 @@ public class Simulateur {
         listeDameuses.add(d3);
         Dameuse DameuseRandom = listeDameuses.get((int) Math.random() * listeDameuses.size()); //choisi alléatoirement parmis les dameuses quel que soit leur nombre
         Traitement simTraitement = new Traitement();
-        Donnees donnees = new Donnees(simTraitement.traitement(dateAlleatoire()+" "+heureAlleatoire()+" 0 0 "+ DameuseRandom.getNom()));  //leur attribue des données alléatoires
+        Donnees donnees = new Donnees(simTraitement.traitement(dateAlleatoire()+" "+heureAlleatoire()+" "+ latitudeAlleatoire() + " " + latitudeAlleatoire() + " " + DameuseRandom.getNom()));  //leur attribue des données alléatoires
         DameuseRandom.setDonnees(donnees);
 
     }
