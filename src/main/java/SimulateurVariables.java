@@ -4,13 +4,13 @@
 public class SimulateurVariables {
 
     //variables fixes pour la date randomisee
-    private int day = 1;
-    private int month = 1;
-    private int year = 2015;
+    private int day;
+    private int month;
+    private int year;
     //variables fixes pour l'heure randomisee
-    private int seconde = 0;
-    private int minute = 0;
-    private int heure = 0;
+    private int seconde;
+    private int minute;
+    private int heure;
 
     public SimulateurVariables(int day, int month, int year, int seconde, int minute, int heure) {
         this.day = day;

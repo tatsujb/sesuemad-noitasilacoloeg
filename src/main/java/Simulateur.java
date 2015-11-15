@@ -8,19 +8,7 @@ import java.util.Random;
 public class Simulateur {
 
     //public rand
-    private Random random = new Random();
-    SimulateurVariables var = new SimulateurVariables(1,1,2015,0,0,0);
 
-
-
-    //variables fixes pour la date randomisee
-    private int day = 1;
-    private int month = 1;
-    private int year = 2015;
-    //variables fixes pour l'heure randomisee
-    private int seconde = 0;
-    private int minute = 0;
-    private int heure = 0;
 
     private int MXsecondes = 60;
     private int MXminutes = 60;
@@ -36,84 +24,97 @@ public class Simulateur {
     private double minLon = -180;
     private double maxLon = +180;
 
-    public ArrayList<Dameuse> listeDameuses = new ArrayList<Dameuse>(); //liste de dammeuses on pourrai aussi randomiser leur nombre mais ici on teste avec 3
+    private ArrayList<Dameuse> listeDameuses = new ArrayList<Dameuse>(); //liste de dammeuses on pourrai aussi randomiser leur nombre mais ici on teste avec 3
+
+
+
+    private SimulateurVariables var;
+    public Simulateur(SimulateurVariables variables){
+        this.var = variables;
+    }
 
     public String dateAlleatoire(){
+        Random rand1 = new Random();
         String ladate = ""; //00/00/00
         String sday = "01";
         String smonth = "01";
-        if(day < MXdays){
-            day = random.nextInt(MXdays);
-        } else if(month < MXmonths){
-            month = random.nextInt(MXmonths);
+        if(var.getDay() < MXdays){
+            var.setDay(rand1.nextInt(MXdays));
+        } else if(var.getMonth() < MXmonths){
+            var.setDay(rand1.nextInt(MXmonths));
         }else{
-            year = random.nextInt(MXyears);
-        }
-        if (day < 10){
-            sday.format("%01d", day);
-        }else{
-            sday = String.valueOf(day);
-        }
-        if (month < 10){
-            smonth.format("%01d", month);
-        }else{
-            smonth = String.valueOf(month);
+            var.setDay(rand1.nextInt(MXyears));
         }
 
-        return ladate.concat(sday +"/"+ smonth +"/"+ year);
+        if (var.getDay() < 10){
+            sday.format("%01d", var.getDay());
+        }else{
+            sday = String.valueOf(var.getDay());
+        }
+        if (var.getMonth() < 10){
+            smonth.format("%01d", var.getMonth());
+        }else{
+            smonth = String.valueOf(var.getMonth());
+        }
+
+        return ladate.concat(sday +"/"+ smonth +"/"+ var.getYear());
     }
 
     public String heureAlleatoire(){
+        Random rand2 = new Random();
         String lheure = ""; //00:00:00
         String sseconde = "00";
         String sminute = "00";
         String sheure = "00";
-        if(heure == MXheures){
+        if(var.getHeure() == MXheures){
             int seconde = 0;
             int minute = 0;
             int heure = 0;
-        }else if(seconde < MXsecondes){
-            seconde = random.nextInt(MXsecondes);
-        }else if(minute < MXminutes){
-            minute = random.nextInt(MXminutes);
+        }else if(var.getSeconde() < MXsecondes){
+            var.setSeconde(rand2.nextInt(MXsecondes));
+        }else if(var.getMinute() < MXminutes){
+            var.setMinute(rand2.nextInt(MXminutes));
         }else{
-        heure = random.nextInt(MXheures);
+        var.setHeure(rand2.nextInt(MXheures));
         }
-        if (seconde < 10){
-            sseconde.format("%01d", seconde);
+        if (var.getSeconde() < 10){
+            sseconde.format("%01d", var.getSeconde());
         }else{
-            sseconde = String.valueOf(seconde);
+            sseconde = String.valueOf(var.getSeconde());
         }
-        if (minute < 10){
-            sminute.format("%01d", minute);
+        if (var.getMinute() < 10){
+            sminute.format("%01d", var.getMinute());
         }else{
-            sminute = String.valueOf(minute);
+            sminute = String.valueOf(var.getMinute());
         }
-        if (heure < 10){
-            sheure.format("%01d", heure);
+        if (var.getHeure() < 10){
+            sheure.format("%01d", var.getHeure());
         }else{
-            sheure = String.valueOf(heure);
+            sheure = String.valueOf(var.getHeure());
         }
 
         return lheure.concat(sheure +":"+ sminute +":"+ sseconde);
     }
 
     public double latitudeAlleatoire(){
-        return (minLat + (maxLat - minLat) * random.nextDouble());
+        Random rand3 = new Random();
+        return (minLat + (maxLat - minLat) * rand3.nextDouble());
     }
 
     public double longitureAlleatoire(){
-        return (minLon + (maxLon - minLon) * random.nextDouble());
+        Random rand4 = new Random();
+        return (minLon + (maxLon - minLon) * rand4.nextDouble());
     }
 
     public void faireDonneesAlleatoires() throws IOException{
+        Random rand5 = new Random();
         Dameuse d1 = new Dameuse("DAM01");
         Dameuse d2 = new Dameuse("DAM02");
         Dameuse d3 = new Dameuse("DAM03");
         listeDameuses.add(d1);
         listeDameuses.add(d2);
         listeDameuses.add(d3);
-        Dameuse DameuseRandom = listeDameuses.get((int) Math.random() * listeDameuses.size()); //choisi alléatoirement parmis les dameuses quel que soit leur nombre
+        Dameuse DameuseRandom = listeDameuses.get(rand5.nextInt(3)); //choisi alléatoirement parmis les dameuses quel que soit leur nombre
         Traitement simTraitement = new Traitement();
         Donnees donnees = new Donnees(simTraitement.traitement(dateAlleatoire()+" "+heureAlleatoire()+" "+ latitudeAlleatoire() + " " + latitudeAlleatoire() + " " + DameuseRandom.getNom()));  //leur attribue des données alléatoires
         DameuseRandom.setDonnees(donnees);
