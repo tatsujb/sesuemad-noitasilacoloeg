@@ -3,6 +3,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -13,7 +15,7 @@ public class DameuseTest {
     private Dameuse dameuse;
 
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
 
         this.dameuse = new Dameuse("dam1");
     }
@@ -40,14 +42,6 @@ public class DameuseTest {
         this.dameuse.setDonnees(donnees1);
         assertEquals(this.dameuse.getDonnees().toString(),"28/12/2015 12:45:12 0 0 dam1");
         assertNotEquals(this.dameuse.getDonnees().toString(),"22/12/2015 12:45:12 0 0 dam1");
-    }
-
-    @Test
-    public void testSetNom() {
-        assertEquals(this.dameuse.getNom(),"dam1");
-        this.dameuse.setNom("dam2");
-        assertEquals(this.dameuse.getNom(), "dam2");
-        assertNotEquals(this.dameuse.getNom(),"dam1");
     }
 
     @Test
