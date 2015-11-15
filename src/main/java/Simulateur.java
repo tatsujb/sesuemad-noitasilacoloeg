@@ -17,7 +17,7 @@ public class Simulateur {
     int seconde = 0;
     int minute = 0;
     int heure = 0;
-    //variables fixe pour la date randomisee
+    //variables fixes pour la date randomisee
     final int MXdays = 30;
     final int MXmonths = 12;
     final int MXyears = 2090;
@@ -28,14 +28,6 @@ public class Simulateur {
 
 
     ArrayList<Dameuse> listeDameuses = new ArrayList<Dameuse>(); //liste de dammeuses on pourrai aussi randomiser leur nombre mais ici on teste avec 3
-    public Simulateur() throws IOException {
-        Dameuse d1 = new Dameuse("DAM01");
-        Dameuse d2 = new Dameuse("DAM02");
-        Dameuse d3 = new Dameuse("DAM03");
-        listeDameuses.add(d1);
-        listeDameuses.add(d2);
-        listeDameuses.add(d3);
-    }
 
     public String dateAlleatoire(){
         String tr = "0/0/2015";
@@ -53,6 +45,7 @@ public class Simulateur {
 
     public String heureAlleatoire(){
         String tr = "00:00:00";
+
         if(heure == MXheures){
             int seconde = 0;
             int minute = 0;
@@ -69,7 +62,13 @@ public class Simulateur {
     }
 
 
-    public void faireDonneesAlleatoires(){
+    public void faireDonneesAlleatoires() throws IOException{
+        Dameuse d1 = new Dameuse("DAM01");
+        Dameuse d2 = new Dameuse("DAM02");
+        Dameuse d3 = new Dameuse("DAM03");
+        listeDameuses.add(d1);
+        listeDameuses.add(d2);
+        listeDameuses.add(d3);
         Dameuse DameuseRandom = listeDameuses.get((int) Math.random() * listeDameuses.size()); //choisi alléatoirement parmis les dameuses quel que soit leur nombre
         Traitement simTraitement = new Traitement();
         Donnees donnees = new Donnees(simTraitement.traitement(dateAlleatoire()+" "+heureAlleatoire()+" 0 0 "+ DameuseRandom.getNom()));  //leur attribue des données alléatoires

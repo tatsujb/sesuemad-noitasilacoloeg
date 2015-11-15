@@ -19,7 +19,7 @@ public class MainSimulateur {
         sendNewDameuseInfo = new Runnable() {
             @Override
             public void run() {
-
+                Simulateur.faireDonneesAlleatoires();
             }
         };
 
