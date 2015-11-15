@@ -49,6 +49,9 @@ public class Dameuse {
         Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
     }
 
+    public void lireLhistorique () throws IOException {
+        Files.readAllLines(this.fichier);
+    }
     @Override
     public String toString() {
 
