@@ -14,9 +14,9 @@ public class Main {
         //initialisation du driver
         Win32Driver w32Driver = new Win32Driver();
         w32Driver.initialize();
-    //r�cup�ration de l'�num�ration
+        //récupération de l'énumération
         Enumeration portList = CommPortIdentifier.getPortIdentifiers();
-    //affichage des noms des ports
+        //affichage des noms des ports
         CommPortIdentifier portId;
         while (portList.hasMoreElements()) {
             portId = (CommPortIdentifier) portList.nextElement();
