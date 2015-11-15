@@ -21,8 +21,8 @@ public class Simulateur {
     private int MXdays = 30;
     private int MXmonths = 12;
     private int MXyears = 2090;
-    private int day = 0;
-    private int month = 0;
+    private int day = 1;
+    private int month = 1;
     private int year = 2015;
     //variables fixes pour la latitude
     private double minLat = -90;
@@ -35,8 +35,8 @@ public class Simulateur {
 
     public String dateAlleatoire(){
         String ladate = ""; //00/00/00
-        String sday = "";
-        String smonth = "";
+        String sday = "01";
+        String smonth = "01";
         if(day < MXdays){
             day = random.nextInt(MXdays);
         } else if(month < MXmonths){
@@ -60,9 +60,9 @@ public class Simulateur {
 
     public String heureAlleatoire(){
         String lheure = ""; //00:00:00
-        String sseconde = "";
-        String sminute = "";
-        String sheure = "";
+        String sseconde = "00";
+        String sminute = "00";
+        String sheure = "00";
         if(heure == MXheures){
             int seconde = 0;
             int minute = 0;
