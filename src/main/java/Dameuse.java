@@ -56,6 +56,7 @@ public class Dameuse {
         do{
             System.out.println(fic.nextLine());
         }while (fic.hasNextLine());
+        fic.close();
     }
 
     @Override
