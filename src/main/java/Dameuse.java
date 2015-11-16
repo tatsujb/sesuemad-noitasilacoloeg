@@ -3,6 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Scanner;
 
 /**
  * Created by Fabienne_2 on 14/11/2015.
@@ -51,9 +52,10 @@ public class Dameuse {
 
     public void lireLhistorique () throws IOException {
 
-        for (String l : Files.readAllLines(this.fichier)){
-            System.out.println(l);
-        }
+         Scanner fic = new Scanner(fichier.toFile());
+        do{
+            System.out.println(fic.nextLine());
+        }while (fic.hasNextLine());
     }
 
     @Override

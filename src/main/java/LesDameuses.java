@@ -20,13 +20,10 @@ public class LesDameuses {
 
             this.lesDameuses.put(p_dameuse.getNom(),p_dameuse);
             p_dameuse.ecrireDansLhistorique();
+            System.out.println("message reçu");
 
     }
 
-    /*private int dameuseExiste (Dameuse p_dameuse){
-        List<Dameuse> listeDameuse = (List<Dameuse>) this.lesDameuses.values();
-        return listeDameuse.indexOf(p_dameuse);
-    }*/
 
     public Map<String, Dameuse> getLesDameuses() {
         return lesDameuses;

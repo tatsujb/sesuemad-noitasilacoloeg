@@ -5,7 +5,7 @@ import java.io.IOException;
  */
 public class MainLesDameusesFiles {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         Traitement t = new Traitement();
         Donnees donnees = new Donnees(t.traitement("125 489 674 233 dam1"));
@@ -16,23 +16,42 @@ public class MainLesDameusesFiles {
         Dameuse dameuse3  = new Dameuse(donnees3);
 
         LesDameuses lesDameuses = new LesDameuses();
+        int tempsDameuse = 1000;
+        int tempsTraitement = 1500;
+        int tempsHistorique = 1800;
         lesDameuses.ajouterDameuse(dameuse1);
+        Thread.sleep(tempsDameuse);
         lesDameuses.ajouterDameuse(dameuse2);
+        Thread.sleep(tempsDameuse);
         lesDameuses.ajouterDameuse(dameuse3);
+        Thread.sleep(tempsDameuse);
         lesDameuses.ajouterDameuse(dameuse1);
+        Thread.sleep(tempsDameuse);
         dameuse1.setDonnees(new Donnees(t.traitement("999 999 999 999 dam1")));
         lesDameuses.ajouterDameuse(dameuse1);
+        Thread.sleep(tempsDameuse);
         lesDameuses.ajouterDameuse(dameuse1);
+        Thread.sleep(tempsDameuse);
         lesDameuses.ajouterDameuse(dameuse2);
+        Thread.sleep(tempsDameuse);
         lesDameuses.ajouterDameuse(dameuse1);
+        Thread.sleep(tempsDameuse);
         lesDameuses.ajouterDameuse(dameuse3);
+        Thread.sleep(tempsTraitement);
+        System.out.print("Traitement en cours.");
+        Thread.sleep(tempsTraitement);
+        System.out.print(".");
+        Thread.sleep(tempsTraitement);
+        System.out.println(".");
+        Thread.sleep(tempsTraitement);
 
         dameuse1.lireLhistorique();
         System.out.println();
+        Thread.sleep(tempsHistorique);
         dameuse2.lireLhistorique();
         System.out.println();
+        Thread.sleep(tempsHistorique);
         dameuse3.lireLhistorique();
-        System.out.println(lesDameuses.getLesDameuses().size());
 
     }
 }
