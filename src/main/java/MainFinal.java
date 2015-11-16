@@ -12,13 +12,13 @@ public class MainFinal {
 
     public static void main(String[] args) throws IOException {
 
-
-        Simulateur simulateur = new Simulateur();
-        Traitement traitement = new Traitement();
-        LesDameuses lesDameuses = new LesDameuses();
+        //final SimulateurVariables var = new SimulateurVariables(16   ,11   ,2015    ,0    ,30     ,12);
+        final Simulateur simulateur = new Simulateur(/*var*/);
+        final Traitement traitement = new Traitement();
+        final LesDameuses lesDameuses = new LesDameuses();
         final int ARRET = 5;
 
-        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         Runnable sendNewDameuseInfo = null;
 
         sendNewDameuseInfo = new Runnable() {
@@ -26,7 +26,7 @@ public class MainFinal {
             public void run() {
                 try {
 
-                    String message = simulateur.faireDonneesAlleatoires();
+                    String message = simulateur.faireDonneesAlleatoires(25);
                     Donnees donnees = new Donnees(traitement.traitement(message));
                     Dameuse dameuse = new Dameuse(donnees);
                     dameuse.setDonnees(donnees);

@@ -7,25 +7,8 @@ import java.util.Random;
  */
 public class Simulateur {
 
-    //public rand
-
-
-    private int MXsecondes = 60;
-    private int MXminutes = 60;
-    private int MXheures = 12;
-
-    private int MXdays = 30;
-    private int MXmonths = 12;
-    private int MXyears = 2090;
-    //variables randomisees pour la latitude
-    private double minLat = -90;
-    private double maxLat = +90;
-    //variables randomisees pour la longitude
-    private double minLon = -180;
-    private double maxLon = +180;
-
+    //private Map<String, Dameuse> listeDameuses = new HashMap<String, Dameuse>(); //le set a l'avantage de permetre une construction semi-automatisee mais pleins de desavantages
     private ArrayList<Dameuse> listeDameuses = new ArrayList<Dameuse>(); //liste de dammeuses on pourrai aussi randomiser leur nombre mais ici on teste avec 3
-
 
 
     private SimulateurVariables var;
@@ -33,92 +16,57 @@ public class Simulateur {
         this.var = new SimulateurVariables(1,1,2015,0,0,0);
     }
 
-    public String dateAlleatoire(){
-        Random rand1 = new Random();
-        String ladate = ""; //00/00/00
-        String sday = "01";
-        String smonth = "01";
-        if(var.getDay() < MXdays){
-            var.setDay(rand1.nextInt(MXdays));
-        } else if(var.getMonth() < MXmonths){
-            var.setDay(rand1.nextInt(MXmonths));
-        }else{
-            var.setDay(rand1.nextInt(MXyears));
+    public String dateAlleatoire(){//00/00/00
+        if (!(var.getDay() < var.getMXdays())){
+            var.setDay(1);
+            var.setMonth(var.getMonth()+1);
+        }else if (!(var.getMonth() < var.getMXmonths())){
+            var.setMonth(1);
+            var.setYear(var.getYear()+1);
         }
 
-        if (var.getDay() < 10){
-            sday.format("%01d", var.getDay());
-        }else{
-            sday = String.valueOf(var.getDay());
-        }
-        if (var.getMonth() < 10){
-            smonth.format("%01d", var.getMonth());
-        }else{
-            smonth = String.valueOf(var.getMonth());
-        }
-        return ladate.concat(sday +"/"+ smonth +"/"+ var.getYear());
+        return var.ladate();
     }
 
     public String heureAlleatoire(){
-        Random rand2 = new Random();
         String lheure = ""; //00:00:00
-        String sseconde = "00";
-        String sminute = "00";
-        String sheure = "00";
-        if(var.getHeure() == MXheures){
-            int seconde = 0;
-            int minute = 0;
-            int heure = 0;
-        }else if(var.getSeconde() < MXsecondes){
-            var.setSeconde(rand2.nextInt(MXsecondes));
-        }else if(var.getMinute() < MXminutes){
-            var.setMinute(rand2.nextInt(MXminutes));
-        }else{
-        var.setHeure(rand2.nextInt(MXheures));
-        }
-        if (var.getSeconde() < 10){
-            sseconde.format("%01d", var.getSeconde());
-        }else{
-            sseconde = String.valueOf(var.getSeconde());
-        }
-        if (var.getMinute() < 10){
-            sminute.format("%01d", var.getMinute());
-        }else{
-            sminute = String.valueOf(var.getMinute());
-        }
-        if (var.getHeure() < 10){
-            sheure.format("%01d", var.getHeure());
-        }else{
-            sheure = String.valueOf(var.getHeure());
-        }
+        //                                            force d'incrementation random des secondes
+        int randomSec = var.getSeconde() +(int)Math.floor(Math.random() * 10);
 
-        return lheure.concat(sheure +":"+ sminute +":"+ sseconde);
+        if(!(var.getHeure() < var.getMXheures())){
+            var.setHeure(0);
+            var.setDay(var.getDay() + 1);
+        }else if(!(var.getMinute() < var.getMXminutes())){
+            var.setMinute(0);
+            var.setHeure(var.getHeure() + 1);
+        }else if(randomSec > var.getMXsecondes()){
+            var.setSeconde(0);
+            var.setMinute(var.getMinute()+1);
+        }else{
+            var.setSeconde(randomSec);
+        }
+        return var.lheure();
+        
     }
 
-    public double latitudeAlleatoire(){
-        Random rand3 = new Random();
-        return (minLat + (maxLat - minLat) * rand3.nextDouble());
-    }
 
-    public double longitureAlleatoire(){
-        Random rand4 = new Random();
-        return (minLon + (maxLon - minLon) * rand4.nextDouble());
-    }
-
-    public String faireDonneesAlleatoires() throws IOException{
+    public void faireDonneesAlleatoires(int nombreDeDameuses) throws IOException{
         Random rand5 = new Random();
-        Traitement simTraitement = new Traitement();
-        Dameuse d1 = new Dameuse(new Donnees(simTraitement.traitement("0 0 0 0 dam1")));
-        Dameuse d2 = new Dameuse(new Donnees(simTraitement.traitement("0 0 0 0 dam2")));
-        Dameuse d3 = new Dameuse(new Donnees(simTraitement.traitement("0 0 0 0 dam3")));
-        listeDameuses.add(d1);
-        listeDameuses.add(d2);
-        listeDameuses.add(d3);
-        Dameuse DameuseRandom = listeDameuses.get(rand5.nextInt(3)); //choisi allï¿½atoirement parmis les dameuses quel que soit leur nombre
+        for (int i = 0; i < nombreDeDameuses; i++) {
+            Dameuse d = new Dameuse("DAM"+i);
+            listeDameuses.add(d);
+        }
 
-        Donnees donnees = new Donnees(simTraitement.traitement(dateAlleatoire()+" "+heureAlleatoire()+" "+ latitudeAlleatoire() + " " + latitudeAlleatoire() + " " + DameuseRandom.getNom()));  //leur attribue des donnï¿½es allï¿½atoires
+        Dameuse DameuseRandom = listeDameuses.get(rand5.nextInt(listeDameuses.size())); //choisi alléatoirement parmis les dameuses quel que soit leur nombre
+        Traitement simTraitement = new Traitement();
+
+        //leur attribue des données alleatoires :
+        Donnees donnees = new Donnees(simTraitement.traitement(dateAlleatoire()+" "+heureAlleatoire()+" "+ var.latitudeAlleatoire() + " " + var.latitudeAlleatoire() + " " + DameuseRandom.getNom()));
         DameuseRandom.setDonnees(donnees);
-        return donnees.toString();
+
+        System.out.println(donnees.toString()); //genere l'affichage a la console
+
+
     }
 
 }

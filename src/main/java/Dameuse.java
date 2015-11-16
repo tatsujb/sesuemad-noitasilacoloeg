@@ -20,6 +20,25 @@ public class Dameuse {
         return nom;
     }
 
+    // Fabienne : Apres moultes tentatives j'entervient ici mais en commentaire de suggestion
+    // comme ca il n'y aurra aucune atteinte a ton code.
+    //
+    // Je comprends que l'on doit ne pas perdre les donnees generes
+    // et que cest ce qu'il arrive chaque fois qu'une donnee-Dameuse dans le code de hier soir est
+    // genere mais il est imperatif de laisser faireDonneesAlleatoires en void de maniere
+    // a preserver sa heute fonctionalite
+    // sans quoi on ne peut plus lui donner un sens logique : il se mordrait forcement la queue
+    // (vois par toi-meme)
+    // donc
+    // je propose de remmettre l'in de Dameuse en String (eh oui!) le nom pourra etre resolu par un simple Dameuse.getNom
+    // et de faire passer les donnees dans une sous-classe (a se moment la; il en
+    // imcombe de la responsabilité de Simulateur d'envoyer donnees (un simple Dameuse.setDonnees)
+    // Je trouve que cette implementation serait
+    // Comment dire...
+    // INFINIMENT
+    // ...preferable a ce a quoi je dois actuellement me confronter
+    // tu ne penses-pas? :P :)
+
     public Dameuse(Donnees donnees) throws IOException {
         this.nom = donnees.getIdentifiantDameuse();
         Traitement t = new Traitement();
