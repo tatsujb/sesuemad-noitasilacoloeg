@@ -1,7 +1,6 @@
-
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by Fabienne_2 on 14/11/2015.
@@ -20,13 +19,20 @@ public class LesDameuses {
 
             this.lesDameuses.put(p_dameuse.getNom(),p_dameuse);
             p_dameuse.ecrireDansLhistorique();
-            System.out.println("message reçu");
+
+            Date date = new Date();
+            String dateCourante  = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE).format(date);
+
+            String heureCourante = new SimpleDateFormat("HH:mm:ss",Locale.FRANCE).format(date);
+
+            System.out.println(dateCourante+" : message reçu à "+heureCourante+" "+p_dameuse.getNom());
+
 
     }
 
 
-    public Map<String, Dameuse> getLesDameuses() {
-        return lesDameuses;
+    public Collection<Dameuse> getLesDameuses() {
+        return lesDameuses.values();
     }
 
     @Override

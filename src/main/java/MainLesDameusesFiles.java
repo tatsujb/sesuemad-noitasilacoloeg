@@ -8,11 +8,11 @@ public class MainLesDameusesFiles {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         Traitement t = new Traitement();
-        Donnees donnees = new Donnees(t.traitement("125 489 674 233 dam1"));
+        Donnees donnees = new Donnees(t.traitement("489 12:50:45 674 233 dam1"));
         Dameuse dameuse1 = new Dameuse(donnees);
-        Donnees donnees1 = new Donnees(t.traitement("111 111 222 222 dam2"));
+        Donnees donnees1 = new Donnees(t.traitement("111 11:12:31 222 222 dam2"));
         Dameuse dameuse2  = new Dameuse((donnees1));
-        Donnees donnees3 = new Donnees(t.traitement("555 551 222 222 dam3"));
+        Donnees donnees3 = new Donnees(t.traitement("551 00:45:12 222 222 dam3"));
         Dameuse dameuse3  = new Dameuse(donnees3);
 
         LesDameuses lesDameuses = new LesDameuses();
@@ -27,7 +27,7 @@ public class MainLesDameusesFiles {
         Thread.sleep(tempsDameuse);
         lesDameuses.ajouterDameuse(dameuse1);
         Thread.sleep(tempsDameuse);
-        dameuse1.setDonnees(new Donnees(t.traitement("999 999 999 999 dam1")));
+        dameuse1.setDonnees(new Donnees(t.traitement("999 14:15:56 999 999 dam1")));
         lesDameuses.ajouterDameuse(dameuse1);
         Thread.sleep(tempsDameuse);
         lesDameuses.ajouterDameuse(dameuse1);
@@ -42,7 +42,7 @@ public class MainLesDameusesFiles {
         Thread.sleep(tempsTraitement);
         System.out.print(".");
         Thread.sleep(tempsTraitement);
-        System.out.println(".");
+        System.out.println(".\n");
         Thread.sleep(tempsTraitement);
 
         dameuse1.lireLhistorique();

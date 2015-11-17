@@ -27,5 +27,24 @@ public class Traitement {
         return donnees;
     }
 
+    public void traitementEnCours(int tempsMilli) throws InterruptedException {
+        System.out.println();
+        Thread.sleep(tempsMilli);
+        System.out.print("Traitement en cours.");
+        Thread.sleep(tempsMilli);
+        System.out.print(".");
+        Thread.sleep(tempsMilli);
+        System.out.println(".\n");
+        Thread.sleep(tempsMilli);
+        System.out.println();
 
+    }
+
+    public void afficheDameuseDisponible(LesDameuses lesDameuses) {
+        System.out.println("Voici les dameuses disponibles : ");
+        for (Dameuse d : lesDameuses.getLesDameuses()){
+            System.out.println(d.getNom());
+
+        }
+    }
 }

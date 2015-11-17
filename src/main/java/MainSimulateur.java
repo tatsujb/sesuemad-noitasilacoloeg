@@ -1,7 +1,4 @@
 import java.io.IOException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by tatsu on 15/11/2015.
@@ -13,7 +10,7 @@ public class MainSimulateur {
         //                                               Jour mois annee seconde minute heure
         SimulateurVariables var = new SimulateurVariables(16   ,11   ,2015    ,0    ,30     ,12);
         //SimulateurVariables var = new SimulateurVariables(0   ,0   ,2015    ,2    ,0     ,0);
-        Simulateur simulateur = new Simulateur();
+        Donnees.Simulateur simulateur = new Donnees.Simulateur();
 
         /*ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         Runnable sendNewDameuseInfo = null;
@@ -27,7 +24,7 @@ public class MainSimulateur {
         //             nombre de lignes simulees a generer
         for (int i = 0; i < 25; i++) {
             //                       nombre de dameuses actives
-            simulateur.faireDonneesAlleatoires(50);
+            simulateur.faireDonneesAlleatoires(5);
         }
 
 

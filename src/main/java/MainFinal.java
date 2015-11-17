@@ -1,54 +1,63 @@
+import javax.swing.*;
 import java.io.IOException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 /**
  * Created by Fabienne_2 on 15/11/2015.
  */
 public class MainFinal {
 
-    private static int COMPTEUR = 0;
+    public static void main(String[] args) throws IOException, InterruptedException {
 
-    public static void main(String[] args) throws IOException {
+        final int nbIncrementation = 20;
 
-        //final SimulateurVariables var = new SimulateurVariables(16   ,11   ,2015    ,0    ,30     ,12);
-        final Simulateur simulateur = new Simulateur(/*var*/);
-        final Traitement traitement = new Traitement();
-        final LesDameuses lesDameuses = new LesDameuses();
-        final int ARRET = 5;
+        GenerateurDeMessage generateurDeMessage = new GenerateurDeMessage();
+        LesDameuses lesDameuses = new LesDameuses();
+        Traitement traitement = new Traitement();
 
-        final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-        Runnable sendNewDameuseInfo = null;
+        simulationSMS(nbIncrementation, generateurDeMessage, lesDameuses, traitement);
 
-        sendNewDameuseInfo = new Runnable() {
-            @Override
-            public void run() {
-                try {
+        Thread.sleep(3000);
+        int choix = JOptionPane.showConfirmDialog(null,"Voulez-vous afficher l'historique des dameuses ?");
 
-                    String message = simulateur.faireDonneesAlleatoires(25);
-                    Donnees donnees = new Donnees(traitement.traitement(message));
-                    Dameuse dameuse = new Dameuse(donnees);
-                    dameuse.setDonnees(donnees);
-                    System.out.println(dameuse.toString());
-                    dameuse.ecrireDansLhistorique();
-                    lesDameuses.ajouterDameuse(dameuse);
+        choixHistorique(lesDameuses, traitement, choix);
 
-                    if (COMPTEUR == ARRET)
-                         executor.shutdown();
-
-                    COMPTEUR++;
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        executor.scheduleAtFixedRate(sendNewDameuseInfo, 0, 1, TimeUnit.SECONDS); //Nombre de secondes d'intervale d'excecution. ici 3
-
-        for (Dameuse d : lesDameuses.getLesDameuses().values()){
-            d.lireLhistorique();
-        }
-        System.out.print(lesDameuses.getLesDameuses().values().size());
     }
+
+    private static void choixHistorique(LesDameuses lesDameuses, Traitement traitement, int choix) throws InterruptedException, IOException {
+        switch (choix){
+            case 0:
+                //oui
+                traitement.traitementEnCours(1000);
+                traitement.afficheDameuseDisponible(lesDameuses);
+
+                traitement.traitementEnCours(1000);
+
+
+                for (Dameuse d : lesDameuses.getLesDameuses()){
+                    d.lireLhistorique();
+                    System.out.println();
+                }
+
+                break;
+            default :
+                JOptionPane.showMessageDialog(null,"Merci de votre visite");
+        }
+    }
+
+    private static void simulationSMS(int nbIncrementation, GenerateurDeMessage generateurDeMessage, LesDameuses lesDameuses, Traitement traitement) throws IOException, InterruptedException {
+        int i = 0;
+
+        do {
+            String sms = generateurDeMessage.genereMessage();
+            List<String> message = traitement.traitement(sms);
+            Dameuse dameuse = new Dameuse(new Donnees(message));
+
+            lesDameuses.ajouterDameuse(dameuse);
+            i++;
+            Thread.sleep(1000);
+        } while (i < nbIncrementation);
+    }
+
+
 }
