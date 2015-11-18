@@ -9,7 +9,7 @@ public class MainFinal {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        final int nbIncrementation = 20;
+        final int nbIncrementation = 10;
 
         GenerateurDeMessage generateurDeMessage = new GenerateurDeMessage();
         LesDameuses lesDameuses = new LesDameuses();
@@ -57,7 +57,10 @@ public class MainFinal {
             i++;
             Thread.sleep(1000);
         } while (i < nbIncrementation);
+
     }
+
+
 
 
 }

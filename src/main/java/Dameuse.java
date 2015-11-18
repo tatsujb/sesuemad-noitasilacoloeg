@@ -12,33 +12,34 @@ import java.util.Scanner;
 public class Dameuse {
 
 
-    private String nom;
     private Donnees donnees;
     private Path fichier;
 
-
     public String getNom(){
-        return nom;
+        return donnees.getIdentifiantDameuse();
     }
 
 
     public Dameuse(Donnees donnees) throws IOException {
-        this.nom = donnees.getIdentifiantDameuse();
         this.setDonnees(donnees);
-        creationFichier(nom);
+        creationFichier(this.getNom());
     }
 
     private void creationFichier(String nom) throws IOException {
+
+            File fich = new File("./src/Historiques");
+            if (!fich.exists()) {
+                fich.mkdir();
+            }
 
             this.fichier = Paths.get("./src/Historiques/" + nom + ".txt");
             String message = "";
             Files.write(fichier, message.getBytes(),StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
 
-            File fich = new File("./src/Historiques/" + nom + ".txt");
+           fich = new File("./src/Historiques/" + nom + ".txt");
             if (fich.length() == 0){
                 initialiserFichier();
             }
-
     }
 
 
@@ -60,7 +61,7 @@ public class Dameuse {
 
     public void initialiserFichier () throws IOException {
 
-        String message = "Historique " + nom + " \n\n";
+        String message = "Historique " + this.getNom() + " \n\n";
         Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
     }
 
@@ -76,6 +77,6 @@ public class Dameuse {
     @Override
     public String toString() {
 
-        return "Dameuse "+ nom +" : "+ donnees.toString();
+        return "Dameuse "+ this.getNom() +" : "+ donnees.toString();
     }
 }

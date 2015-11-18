@@ -166,6 +166,5 @@ public class SimulateurVariables {
     }public void nextYear() {
         setYear((int) (this.heure + Math.floor(Math.random() * getMXyears() - this.year)));
     }*/
-    
-    
+
 }
