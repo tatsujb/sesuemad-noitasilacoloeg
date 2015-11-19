@@ -1,3 +1,7 @@
+package Main;
+
+import Class.*;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.util.List;

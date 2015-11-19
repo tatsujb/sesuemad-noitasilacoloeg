@@ -10,11 +10,11 @@ import static org.junit.Assert.*;
  */
 public class TraitementTest {
 
-    private Traitement traitement;
+    private Class.Traitement traitement;
 
     @Before
     public void setUp() {
-        traitement = new Traitement();
+        traitement = new Class.Traitement();
     }
 
     @After

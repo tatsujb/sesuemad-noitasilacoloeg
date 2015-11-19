@@ -1,3 +1,5 @@
+package Class;
+
 /**
  * Created by Fabienne_2 on 16/11/2015.
  */

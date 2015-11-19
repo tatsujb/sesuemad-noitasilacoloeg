@@ -5,22 +5,20 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Fabienne_2 on 14/11/2015.
  */
 public class DameuseTest {
 
-    private Dameuse dameuse;
-    private Traitement traitement;
-    private Donnees donnees;
+    private Class.Dameuse dameuse;
+    private Class.Traitement traitement;
+    private Class.Donnees donnees;
 
     @Before
     public void setUp() throws IOException {
-        traitement = new Traitement();
-        this.donnees = new Donnees(traitement.traitement("22/12/2015 12:45:12 0 0 dam1"));
-        this.dameuse = new Dameuse(this.donnees);
+        traitement = new Class.Traitement();
+        this.donnees = new Class.Donnees(traitement.traitement("22/12/2015 12:45:12 0 0 dam1"));
+        this.dameuse = new Class.Dameuse(this.donnees);
 
     }
 
@@ -40,7 +38,7 @@ public class DameuseTest {
 
         assertEquals(this.dameuse.getDonnees().toString(),"0 0 0 0 0");
 
-        Donnees donnees1 = new Donnees(traitement.traitement("28/12/2015 12:45:12 0 0 dam1"));
+        Class.Donnees donnees1 = new Class.Donnees(traitement.traitement("28/12/2015 12:45:12 0 0 dam1"));
         this.dameuse.setDonnees(donnees1);
         assertEquals(this.dameuse.getDonnees().toString(),"28/12/2015 12:45:12 0 0 dam1");
         assertNotEquals(this.dameuse.getDonnees().toString(),"22/12/2015 12:45:12 0 0 dam1");
@@ -48,6 +46,6 @@ public class DameuseTest {
 
     @Test
     public void testToString() {
-        assertEquals(this.dameuse.toString(), "Dameuse dam1 : 0 0 0 0 0");
+        assertEquals(this.dameuse.toString(), "Class.Dameuse dam1 : 0 0 0 0 0");
     }
 }

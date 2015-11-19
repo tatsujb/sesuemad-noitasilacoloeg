@@ -11,14 +11,14 @@ import static org.junit.Assert.assertEquals;
  */
 public class DonneesTest {
 
-    private Donnees donnees;
-    private  Traitement traitement;
+    private Class.Donnees donnees;
+    private Class.Traitement traitement;
 
     @Before
     public void setUp() {
-        this.traitement = new Traitement();
+        this.traitement = new Class.Traitement();
         List<String> t = traitement.traitement("10/12/2015 12:45:12 0 0 dam1");
-        this.donnees = new Donnees(t);
+        this.donnees = new Class.Donnees(t);
     }
 
     @After

@@ -1,3 +1,5 @@
+package Class;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -77,6 +79,6 @@ public class Dameuse {
     @Override
     public String toString() {
 
-        return "Dameuse "+ this.getNom() +" : "+ donnees.toString();
+        return "Class.Dameuse "+ this.getNom() +" : "+ donnees.toString();
     }
 }

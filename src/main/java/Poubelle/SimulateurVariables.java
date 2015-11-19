@@ -1,3 +1,5 @@
+package Poubelle;
+
 import java.util.Random;
 
 /**

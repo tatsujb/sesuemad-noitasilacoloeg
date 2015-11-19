@@ -1,3 +1,10 @@
+package Main;
+
+import Class.Dameuse;
+import Class.Donnees;
+import Class.LesDameuses;
+import Class.Traitement;
+
 import java.io.IOException;
 
 /**

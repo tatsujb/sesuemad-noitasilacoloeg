@@ -9,11 +9,11 @@ import static org.junit.Assert.assertEquals;
  */
 public class LesDameusesTest {
 
-    private LesDameuses lesDameuses;
+    private Class.LesDameuses lesDameuses;
 
     @Before
     public void setUp() throws Exception {
-        this.lesDameuses = new LesDameuses();
+        this.lesDameuses = new Class.LesDameuses();
     }
 
     @After
@@ -23,14 +23,14 @@ public class LesDameusesTest {
 
     @Test
     public void testAjouterDameuse() throws Exception {
-        Traitement traitement = new Traitement();
-        Donnees donnees = new Donnees(traitement.traitement("22/12/2015 12:45:12 0 0 dam1"));
-        Donnees donnees1 = new Donnees(traitement.traitement("22/12/2015 12:45:12 0 0 dam2"));
-        Dameuse dameuse = new Dameuse(donnees);
+        Class.Traitement traitement = new Class.Traitement();
+        Class.Donnees donnees = new Class.Donnees(traitement.traitement("22/12/2015 12:45:12 0 0 dam1"));
+        Class.Donnees donnees1 = new Class.Donnees(traitement.traitement("22/12/2015 12:45:12 0 0 dam2"));
+        Class.Dameuse dameuse = new Class.Dameuse(donnees);
         dameuse.setDonnees(donnees);
         this.lesDameuses.ajouterDameuse(dameuse);
         assertEquals(this.lesDameuses.getLesDameuses().size(),1);
-        Dameuse dameuse2 = new Dameuse(donnees1);
+        Class.Dameuse dameuse2 = new Class.Dameuse(donnees1);
         this.lesDameuses.ajouterDameuse(dameuse2);
         assertEquals(this.lesDameuses.getLesDameuses().size(),2);
     }

@@ -1,4 +1,4 @@
-package Main;
+package Poubelle;
 
 import com.sun.comm.Win32Driver;
 

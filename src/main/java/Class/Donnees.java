@@ -1,3 +1,5 @@
+package Class;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +80,7 @@ public class Donnees {
      */
     public static class Simulateur {
 
-        //private Map<String, Dameuse> listeDameuses = new HashMap<String, Dameuse>(); //le set a l'avantage de permetre une construction semi-automatisee mais pleins de desavantages
+        //private Map<String, Class.Dameuse> listeDameuses = new HashMap<String, Class.Dameuse>(); //le set a l'avantage de permetre une construction semi-automatisee mais pleins de desavantages
         private ArrayList<Dameuse> listeDameuses = new ArrayList<Dameuse>(); //liste de dammeuses on pourrai aussi randomiser leur nombre mais ici on teste avec 3
 
 
@@ -124,7 +126,7 @@ public class Donnees {
         public void faireDonneesAlleatoires(int nombreDeDameuses) throws IOException {
             Random rand5 = new Random();
             for (int i = 0; i < nombreDeDameuses; i++) {
-             //   Dameuse d = new Dameuse("DAM"+i);
+             //   Class.Dameuse d = new Class.Dameuse("DAM"+i);
                // listeDameuses.add(d);
             }
 
