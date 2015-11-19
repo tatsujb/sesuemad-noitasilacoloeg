@@ -1,3 +1,7 @@
+/**
+ * Created by tatsu on 15/11/2015.
+ */
+
 package Poubelle;
 
 import Class.Dameuse;
@@ -8,9 +12,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * Created by tatsu on 15/11/2015.
- */
 public class Simulateur {
 
     //private Map<String, Class.Dameuse> listeDameuses = new HashMap<String, Class.Dameuse>(); //le set a l'avantage de permetre une construction semi-automatisee mais pleins de desavantages
