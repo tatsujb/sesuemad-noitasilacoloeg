@@ -79,6 +79,6 @@ public class Dameuse {
     @Override
     public String toString() {
 
-        return "Class.Dameuse "+ this.getNom() +" : "+ donnees.toString();
+        return "Dameuse "+ this.getNom() +" : "+ donnees.toString();
     }
 }
