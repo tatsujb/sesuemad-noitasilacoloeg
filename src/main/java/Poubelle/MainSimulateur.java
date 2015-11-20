@@ -1,7 +1,5 @@
 package Poubelle;
 
-import Class.Donnees;
-
 import java.io.IOException;
 
 /**
@@ -14,7 +12,7 @@ public class MainSimulateur {
         //                                               Jour mois annee seconde minute heure
         SimulateurVariables var = new SimulateurVariables(16   ,11   ,2015    ,0    ,30     ,12);
         //Poubelle.SimulateurVariables var = new Poubelle.SimulateurVariables(0   ,0   ,2015    ,2    ,0     ,0);
-        Donnees.Simulateur simulateur = new Donnees.Simulateur();
+        Simulateur simulateur = new Simulateur();
 
         /*ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         Runnable sendNewDameuseInfo = null;

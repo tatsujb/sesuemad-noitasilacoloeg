@@ -1,20 +1,21 @@
+import Class.Traitement;
 import org.junit.After;
 import org.junit.Before;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Fabienne_2 on 14/11/2015.
  */
 public class TraitementTest {
 
-    private Class.Traitement traitement;
+    private Traitement traitement;
 
     @Before
     public void setUp() {
-        traitement = new Class.Traitement();
+        traitement = new Traitement();
     }
 
     @After
