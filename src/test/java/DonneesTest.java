@@ -1,3 +1,5 @@
+import Class.Donnees;
+import Class.Traitement;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -5,7 +7,6 @@ import Class.*;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-
 /**
  * Created by Fabienne_2 on 14/11/2015.
  */
