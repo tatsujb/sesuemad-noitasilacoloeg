@@ -8,6 +8,8 @@ import java.util.Random;
 /**
  * Created by Fabienne_2 on 14/11/2015.
  */
+
+//Mon dec 14 21:10:10 CET 20015|43.4557454|1.5587445|7(numéro dameuse)
 public class Donnees {
 
     private String lattitude;

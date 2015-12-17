@@ -6,6 +6,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+import Class.Traitement;
 /**
  * Created by Fabienne_2 on 14/11/2015.
  */
