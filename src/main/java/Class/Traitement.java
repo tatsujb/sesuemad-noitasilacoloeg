@@ -7,6 +7,9 @@ import java.util.List;
 /**
  * Created by tatsu on 13/11/2015.
  */
+
+//Mon dec 14 21:10:10 CET 2015|43.4557454|1.5587445|7(numéro dameuse)
+
 public class Traitement {
 
     public List<String> traitement(String p_message) {
@@ -18,7 +21,7 @@ public class Traitement {
         String chaineTemporaire ="";
 
         for (int i=0; i<p_message.length(); i++) {
-            if (p_message.charAt(i) == ' ') {
+            if (p_message.charAt(i) == ' ') { // mettre un /
                 donnees.add(chaineTemporaire);
                 chaineTemporaire = "";
             } else {
@@ -32,7 +35,7 @@ public class Traitement {
     public void traitementEnCours(int tempsMilli) throws InterruptedException {
         System.out.println();
         Thread.sleep(tempsMilli);
-        System.out.print("Class.Traitement en cours.");
+        System.out.print("Traitement en cours.");
         Thread.sleep(tempsMilli);
         System.out.print(".");
         Thread.sleep(tempsMilli);

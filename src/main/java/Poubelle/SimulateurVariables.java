@@ -144,6 +144,8 @@ public class SimulateurVariables {
         return ladate.concat(sday +"/"+ smonth +"/"+ this.getYear());
     }
 
+
+
     public double latitudeAlleatoire(){
         return (minLat + (maxLat - minLat) * rand1.nextDouble());
     }

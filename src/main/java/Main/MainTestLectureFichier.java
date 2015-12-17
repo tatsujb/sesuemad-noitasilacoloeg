@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * Created by Fabienne_2 on 18/11/2015.
  */
-public class TestLectureFichier {
+public class MainTestLectureFichier {
 
     public static void main(String[] args) throws FileNotFoundException {
 
