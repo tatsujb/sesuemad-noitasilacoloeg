@@ -1,7 +1,7 @@
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import Class.*;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -11,14 +11,14 @@ import static org.junit.Assert.assertEquals;
  */
 public class DonneesTest {
 
-    private Class.Donnees donnees;
-    private Class.Traitement traitement;
+    private Donnees donnees;
+    private Traitement traitement;
 
     @Before
     public void setUp() {
-        this.traitement = new Class.Traitement();
+        this.traitement = new Traitement();
         List<String> t = traitement.traitement("10/12/2015 12:45:12 0 0 dam1");
-        this.donnees = new Class.Donnees(t);
+        this.donnees = new Donnees(t);
     }
 
     @After
