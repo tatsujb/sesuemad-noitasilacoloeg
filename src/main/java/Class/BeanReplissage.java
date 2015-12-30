@@ -15,7 +15,7 @@ public class BeanReplissage {
 
 
 
-    public Remplir() throws IOException {
+    public BeanDeDameuse Remplir() throws IOException {
 
         BeanDeDameuse truc = new BeanDeDameuse();
         Traitement trait = new Traitement();
@@ -29,6 +29,7 @@ public class BeanReplissage {
         }while (fic.hasNextLine());
         fic.close();
 
+        return truc;
 
 
     }

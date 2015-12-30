@@ -26,11 +26,11 @@ public class ImplementationDeLinterface {
     @FXML
     TableColumn<BeanDeDameuse, String> ColoneLatitude;
 
-    @FXML
-    TableColumn<BeanDeDameuse, String> ColoneAltitude;
+    //@FXML
+    //TableColumn<BeanDeDameuse, String> ColoneAltitude;
 
-    @FXML
-    TableColumn<BeanDeDameuse, String> ColoneOrientation;
+    //@FXML
+    //TableColumn<BeanDeDameuse, String> ColoneOrientation;
 
     @FXML
     TableColumn<BeanDeDameuse, String> ColoneJour;
@@ -51,8 +51,8 @@ public class ImplementationDeLinterface {
         ColoneDameuses.setCellValueFactory(param -> param.getValue().dameusesProperty());
         ColoneLongitude.setCellValueFactory(param -> param.getValue().longitudeProperty());
         ColoneLatitude.setCellValueFactory(param -> param.getValue().latitudeProperty());
-        ColoneAltitude.setCellValueFactory(param -> param.getValue().altitudeProperty());
-        ColoneOrientation.setCellValueFactory(param -> param.getValue().orientationProperty());
+        //ColoneAltitude.setCellValueFactory(param -> param.getValue().altitudeProperty());
+        //ColoneOrientation.setCellValueFactory(param -> param.getValue().orientationProperty());
         ColoneJour.setCellValueFactory(param -> param.getValue().jourProperty());
         ColoneHeure.setCellValueFactory(param -> param.getValue().heureProperty());
     }
