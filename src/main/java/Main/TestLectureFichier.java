@@ -13,7 +13,7 @@ public class TestLectureFichier {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        Path file = Paths.get("historiques.txt");
+        Path file = Paths.get("./src/Historiques/dam6.txt");
         Scanner fic = new Scanner(file.toFile());
         do{
             System.out.println(fic.nextLine());

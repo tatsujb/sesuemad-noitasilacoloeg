@@ -32,7 +32,7 @@ public class Traitement {
     public void traitementEnCours(int tempsMilli) throws InterruptedException {
         System.out.println();
         Thread.sleep(tempsMilli);
-        System.out.print("Traitement en cours.");
+        System.out.print("Class.Traitement en cours.");
         Thread.sleep(tempsMilli);
         System.out.print(".");
         Thread.sleep(tempsMilli);

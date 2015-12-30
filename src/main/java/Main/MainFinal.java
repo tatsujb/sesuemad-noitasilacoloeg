@@ -13,7 +13,7 @@ public class MainFinal {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        final int nbIncrementation = 10;
+        final int nbIncrementation = 2;
 
         GenerateurDeMessage generateurDeMessage = new GenerateurDeMessage();
         LesDameuses lesDameuses = new LesDameuses();
