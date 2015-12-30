@@ -13,7 +13,7 @@ public class Traitement {
         return separeLesDonnees(p_message);
     }
 
-    private List<String> separeLesDonnees(String p_message) {
+    public List<String> separeLesDonnees(String p_message) {
         List<String> donnees = new LinkedList<String>();
         String chaineTemporaire ="";
 
