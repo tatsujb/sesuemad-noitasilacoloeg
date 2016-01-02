@@ -5,10 +5,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+        <HBox fx:id="Fenetre" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
             <children>
                 <CheckBox mnemonicParsing="false" text="Par Dameuse" />
                 <CheckBox mnemonicParsing="false" text="Aujourd'hui" />
@@ -21,15 +20,15 @@
             <content>
                 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                     <children>
-                        <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="TableAffichageDonnees" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                             <columns>
-                                <TableColumn prefWidth="75.0" text="Dameuse" />
-                                <TableColumn maxWidth="1.7976931348623157E308" minWidth="110.0" prefWidth="-1.0" text="Longitude" />
-                                <TableColumn minWidth="110.0" prefWidth="-1.0" text="Latitude" />
-                                <TableColumn minWidth="110.0" prefWidth="-1.0" text="Altitude" />
-                                <TableColumn minWidth="110.0" prefWidth="-1.0" text="Orientation" />
-                                <TableColumn prefWidth="75.0" text="Jour" />
-                                <TableColumn prefWidth="75.0" text="Heure" />
+                                <TableColumn fx:id="ColoneDameuses" prefWidth="75.0" text="Dameuse" />
+                                <TableColumn fx:id="ColoneLongitude" maxWidth="1.7976931348623157E308" minWidth="110.0" prefWidth="-1.0" text="Longitude" />
+                                <TableColumn fx:id="ColoneLatitude" minWidth="110.0" prefWidth="-1.0" text="Latitude" />
+                                <TableColumn fx:id="ColoneAltitude" minWidth="110.0" prefWidth="-1.0" text="Altitude" />
+                                <TableColumn fx:id="ColoneOrientation" minWidth="110.0" prefWidth="-1.0" text="Orientation" />
+                                <TableColumn fx:id="ColoneJour" prefWidth="75.0" text="Jour" />
+                                <TableColumn fx:id="ColoneHeure" prefWidth="75.0" text="Heure" />
                             </columns>
                         </TableView>
                     </children>

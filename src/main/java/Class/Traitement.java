@@ -7,21 +7,18 @@ import java.util.List;
 /**
  * Created by tatsu on 13/11/2015.
  */
-
-//Mon dec 14 21:10:10 CET 2015|43.4557454|1.5587445|7(numéro dameuse)
-
 public class Traitement {
 
     public List<String> traitement(String p_message) {
         return separeLesDonnees(p_message);
     }
 
-    private List<String> separeLesDonnees(String p_message) {
+    public List<String> separeLesDonnees(String p_message) {
         List<String> donnees = new LinkedList<String>();
         String chaineTemporaire ="";
 
         for (int i=0; i<p_message.length(); i++) {
-            if (p_message.charAt(i) == ' ') { // mettre un /
+            if (p_message.charAt(i) == ' ') {
                 donnees.add(chaineTemporaire);
                 chaineTemporaire = "";
             } else {
@@ -35,7 +32,7 @@ public class Traitement {
     public void traitementEnCours(int tempsMilli) throws InterruptedException {
         System.out.println();
         Thread.sleep(tempsMilli);
-        System.out.print("Traitement en cours.");
+        System.out.print("Class.Traitement en cours.");
         Thread.sleep(tempsMilli);
         System.out.print(".");
         Thread.sleep(tempsMilli);
