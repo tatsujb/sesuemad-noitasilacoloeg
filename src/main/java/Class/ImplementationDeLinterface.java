@@ -63,7 +63,7 @@ public class ImplementationDeLinterface {
         }
 
 /*
-        BeanReplissage.Remplir().thenAccept(BeanDeDameuse1 -> {
+        BeanRemplissage.Remplir().thenAccept(BeanDeDameuse1 -> {
             if(ImplementationDeLinterface.this.BeanDeDameuse = NULL){
                 throw new NullPointerException("woops!");
             }else{

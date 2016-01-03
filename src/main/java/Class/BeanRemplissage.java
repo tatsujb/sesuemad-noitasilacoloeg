@@ -9,7 +9,7 @@ import java.util.concurrent.CompletionStage;
 /**
  * Created by tatsu on 27/12/2015.
  */
-public class BeanReplissage {
+public class BeanRemplissage {
 
     private Path fichier;
 

@@ -42,10 +42,20 @@ public class Traitement {
 
     }
 
+    /*
     public void afficheDameuseDisponible(LesDameuses lesDameuses) {
         System.out.println("Voici les dameuses qui ont été en mouvement : ");
         for (Dameuse d : lesDameuses.getLesDameuses()){
             System.out.println(d.getNom());
+
+        }
+    }
+    */
+
+    public void afficheDameuseDisponible(LesDameuses lesDameuses) {
+        System.out.println("Voici les dameuses qui ont été en mouvement : ");
+        for (){
+            System.out.println(d.getDameuses());
 
         }
     }
