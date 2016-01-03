@@ -128,12 +128,12 @@ public class BeanDeDameuse {
 
     public void setDonnees(List<String> l){
         this.setDameuses(l.get(0));
-        this.setLongitude(l.get(2));
         this.setLatitude(l.get(1));
+        this.setLongitude(l.get(2));
         //this.setAltitude(l.get(3));
         //this.setOrientation(l.get(4));
-        this.setJour(l.get(5));
-        this.setHeure(l.get(6));
+        this.setJour(l.get(3));
+        this.setHeure(l.get(4));
     }
 
 
