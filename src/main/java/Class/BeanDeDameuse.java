@@ -8,7 +8,14 @@ import javafx.beans.property.SimpleIntegerProperty;*/
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by tatsu on 27/12/2015.
@@ -23,6 +30,7 @@ public class BeanDeDameuse {
     private StringProperty jour;
     private StringProperty heure;
 
+    private Path fichier;
 
     public BeanDeDameuse() {
         dameuses = new SimpleStringProperty();
@@ -126,5 +134,56 @@ public class BeanDeDameuse {
         //this.setOrientation(l.get(4));
         this.setJour(l.get(5));
         this.setHeure(l.get(6));
+    }
+
+    private void creationFichier(String nom) throws IOException {
+
+        File fich = new File("./src/Historiques");
+        if (!fich.exists()) {
+            fich.mkdir();
+        }
+
+        this.fichier = Paths.get("./src/Historiques/" + nom + ".txt");
+        String message = "";
+        Files.write(fichier, message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
+
+        fich = new File("./src/Historiques/" + nom + ".txt");
+        if (fich.length() == 0){
+            initialiserFichier();
+        }
+    }
+
+
+
+    public void ecrireDansLhistorique () throws IOException {
+
+        String message = this.toString()+"\n";
+        Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
+    }
+
+    public void initialiserFichier () throws IOException {
+
+        String message = "Historique " + this.getDameuses() + " \n\n";
+        Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
+    }
+
+    public void lireLhistorique () throws IOException {
+
+        Scanner fic = new Scanner(fichier.toFile());
+        do{
+            System.out.println(fic.nextLine());
+        }while (fic.hasNextLine());
+        fic.close();
+    }
+
+    @Override
+    public String toString() {
+        return "BeanDeDameuse{" +
+                "dameuses=" + dameuses +
+                ", longitude=" + longitude +
+                ", latitude=" + latitude +
+                ", jour=" + jour +
+                ", heure=" + heure +
+                '}';
     }
 }

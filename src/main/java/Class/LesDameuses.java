@@ -14,17 +14,17 @@ import java.util.*;
  */
 public class LesDameuses {
 
-    private Map<String,Dameuse> lesDameuses;
+    private Map<String,BeanDeDameuse> lesBeanDeDameuses;
 
     public LesDameuses() {
-        this.lesDameuses = new HashMap<String, Dameuse>();
+        this.lesDameuses = new HashMap<String, BeanDeDameuse>();
     }
 
-    public void ajouterDameuse (Dameuse p_dameuse) throws IllegalArgumentException, IOException {
+    public void ajouterBeanDeDameuse (BeanDeDameuse p_dameuse) throws IllegalArgumentException, IOException {
         if (p_dameuse == null)
             throw new IllegalArgumentException("Paramètre invalide, dameuse erronée");
 
-        this.lesDameuses.put(p_dameuse.getNom(),p_dameuse);
+        this.lesBeanDeDameuses.put(p_dameuse.getDameuses(),p_dameuse);
         p_dameuse.ecrireDansLhistorique();
 
         String adresseFichier="./src/Historiques/historiqueGeneral.txt";
@@ -43,20 +43,20 @@ public class LesDameuses {
 
         String heureCourante = new SimpleDateFormat("HH:mm:ss",Locale.FRANCE).format(date);
 
-        System.out.println(dateCourante+" : message reçu à "+heureCourante+" "+p_dameuse.getNom());
+        System.out.println(dateCourante+" : message reçu à "+heureCourante+" "+p_dameuse.getDameuses());
 
 
     }
 
 
-    public Collection<Dameuse> getLesDameuses() {
-        return lesDameuses.values();
+    public Collection<BeanDeDameuse> getLesBeanDeDameuses() {
+        return lesBeanDeDameuses.values();
     }
 
     @Override
     public String toString() {
         String resultat = "";
-        for (Dameuse d : this.lesDameuses.values()){
+        for (BeanDeDameuse d : this.lesBeanDeDameuses.values()){
             resultat += d.toString()+"\n";
         }
         return resultat;

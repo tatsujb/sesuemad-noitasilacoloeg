@@ -22,16 +22,18 @@ public class MainFinal extends Application{
         final int nbIncrementation = 2;
 
         GenerateurDeMessage generateurDeMessage = new GenerateurDeMessage();
-        LesDameuses lesDameuses = new LesDameuses();
-        Traitement traitement = new Traitement();
+        BeanDeDameuse b = new BeanDeDameuse();
+
 
         simulationSMS(nbIncrementation, generateurDeMessage, lesDameuses, traitement);
 
+
+        /*
         traitement.traitementEnCours(1000);
         traitement.afficheDameuseDisponible(lesDameuses);
 
         traitement.traitementEnCours(1000);
-
+        */
 
         for (Dameuse d : lesDameuses.getLesDameuses()){
             d.lireLhistorique();
