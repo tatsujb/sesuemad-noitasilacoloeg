@@ -26,7 +26,7 @@ public class BeanRemplissage {
         fic.nextLine();
         do{
             List<String> liste=traitmnt.traitement(fic.nextLine());
-            if (!liste.isEmpty() || liste.get(0)==" ") {
+            if (liste.size()>5) {
                 System.out.println(liste);
                 bean.setDonnees(liste);
             }

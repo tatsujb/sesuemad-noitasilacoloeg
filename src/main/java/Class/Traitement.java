@@ -19,7 +19,6 @@ public class Traitement {
 
         for (int i=0; i<p_message.length(); i++) {
             if (p_message.charAt(i) == ' ') {
-                System.out.println(chaineTemporaire);
                 donnees.add(chaineTemporaire);
                 chaineTemporaire = "";
             } else {
