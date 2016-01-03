@@ -13,7 +13,7 @@ public class Traitement {
         return separeLesDonnees(p_message);
     }
 
-    private List<String> separeLesDonnees(String p_message) {
+    public List<String> separeLesDonnees(String p_message) {
         List<String> donnees = new LinkedList<String>();
         String chaineTemporaire ="";
 
@@ -42,10 +42,20 @@ public class Traitement {
 
     }
 
+    /*
     public void afficheDameuseDisponible(LesDameuses lesDameuses) {
         System.out.println("Voici les dameuses qui ont été en mouvement : ");
         for (Dameuse d : lesDameuses.getLesDameuses()){
             System.out.println(d.getNom());
+
+        }
+    }
+    */
+
+    public void afficheDameuseDisponible(LesDameuses lesDameuses) {
+        System.out.println("Voici les dameuses qui ont été en mouvement : ");
+        for (){
+            System.out.println(d.getDameuses());
 
         }
     }
