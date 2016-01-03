@@ -13,12 +13,13 @@ public class Traitement {
         return separeLesDonnees(p_message);
     }
 
-    public List<String> separeLesDonnees(String p_message) {
+    private List<String> separeLesDonnees(String p_message) {
         List<String> donnees = new LinkedList<String>();
         String chaineTemporaire ="";
 
         for (int i=0; i<p_message.length(); i++) {
             if (p_message.charAt(i) == ' ') {
+                System.out.println(chaineTemporaire);
                 donnees.add(chaineTemporaire);
                 chaineTemporaire = "";
             } else {

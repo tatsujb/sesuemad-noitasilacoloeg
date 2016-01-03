@@ -18,19 +18,21 @@ public class BeanRemplissage {
 
         BeanDeDameuse bean = new BeanDeDameuse();
         Traitement traitmnt = new Traitement();
-        List<String> liste;
+
 
         this.fichier = Paths.get("./src/Historiques/dam0.txt");
         Scanner fic = new Scanner(fichier.toFile());
+        fic.nextLine();
+        fic.nextLine();
         do{
-            System.out.println(fic.nextLine());
-            liste=traitmnt.separeLesDonnees(fic.nextLine());
-            bean.setDonnees(liste);
+            List<String> liste=traitmnt.traitement(fic.nextLine());
+            if (!liste.isEmpty()) {
+                System.out.println(liste);
+                bean.setDonnees(liste);
+            }
         }while (fic.hasNextLine());
+        System.out.println();
         fic.close();
-
-
-
 
     }
 }

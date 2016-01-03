@@ -31,25 +31,23 @@ public class MainFinal extends Application{
 
         simulationSMS(nbIncrementation, generateurDeMessage, lesDameuses, traitement);
 
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
         int choix = JOptionPane.showConfirmDialog(null,"Voulez-vous afficher l'historique des dameuses ?");
 
         choixHistorique(lesDameuses, traitement, choix);
 
         BeanRemplissage BR = new BeanRemplissage();
         BR.Remplir();
-
-
     }
 
     private static void choixHistorique(LesDameuses lesDameuses, Traitement traitement, int choix) throws InterruptedException, IOException {
         switch (choix){
             case 0:
                 //oui
-                traitement.traitementEnCours(1000);
+                //traitement.traitementEnCours(1000);
                 traitement.afficheDameuseDisponible(lesDameuses);
 
-                traitement.traitementEnCours(1000);
+                //traitement.traitementEnCours(1000);
 
 
                 for (Dameuse d : lesDameuses.getLesDameuses()){
@@ -73,7 +71,7 @@ public class MainFinal extends Application{
 
             lesDameuses.ajouterDameuse(dameuse);
             i++;
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
         } while (i < nbIncrementation);
 
     }
@@ -88,8 +86,6 @@ public class MainFinal extends Application{
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-
     }
 
 
