@@ -20,9 +20,9 @@ public class MainFinal extends Application{
         launch(args);
 
         final int nbIncrementation = 2;
-
+        Traitement traitement = new Traitement();
         GenerateurDeMessage generateurDeMessage = new GenerateurDeMessage();
-        BeanDeDameuse b = new BeanDeDameuse();
+        LesDameuses lesDameuses = new LesDameuses();
 
 
         simulationSMS(nbIncrementation, generateurDeMessage, lesDameuses, traitement);
@@ -35,7 +35,7 @@ public class MainFinal extends Application{
         traitement.traitementEnCours(1000);
         */
 
-        for (Dameuse d : lesDameuses.getLesDameuses()){
+        for (BeanDeDameuse d : lesDameuses.getLesBeanDeDameuses()){
             d.lireLhistorique();
             System.out.println();
         }
@@ -61,7 +61,7 @@ public class MainFinal extends Application{
         do {
             String sms = generateurDeMessage.genereMessage();
             List<String> message = traitement.traitement(sms);
-            Dameuse dameuse = new Dameuse(new Donnees(message));
+            BeanDeDameuse dameuse = new BeanDeDameuse();
 
             lesDameuses.ajouterDameuse(dameuse);
             i++;
