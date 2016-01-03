@@ -1,17 +1,15 @@
 package Main;
 
+import Class.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.List;
-
-import Class.*;
-
-import javax.swing.*;
 
 /**
  * Created by Fabienne_2 on 15/11/2015.

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.CompletionStage;
 
 /**
  * Created by tatsu on 27/12/2015.
@@ -12,8 +11,6 @@ import java.util.concurrent.CompletionStage;
 public class BeanRemplissage {
 
     private Path fichier;
-
-
 
     public BeanDeDameuse Remplir() throws IOException {
 
