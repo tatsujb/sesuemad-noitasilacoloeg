@@ -14,7 +14,7 @@ public class BeanRemplissage {
 
     private Path fichier;
 
-    public void Remplir() throws IOException {
+    public BeanDeDameuse Remplir() throws IOException {
 
         BeanDeDameuse bean = new BeanDeDameuse();
         Traitement traitmnt = new Traitement();
@@ -34,5 +34,6 @@ public class BeanRemplissage {
         System.out.println();
         fic.close();
 
+        return bean;
     }
 }

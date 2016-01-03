@@ -6,7 +6,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Scanner;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
@@ -39,7 +42,7 @@ public class ImplementationDeLinterface {
     @FXML
     TableColumn<BeanDeDameuse, String> ColoneHeure;
 
-    private List<BeanDeDameuse> BeanDeDameuse;
+    private List<BeanDeDameuse> beanDeDameuses;
 
     private FilteredList<BeanDeDameuse> filteredList;
 
@@ -47,8 +50,10 @@ public class ImplementationDeLinterface {
         System.out.println("Interface instantiated");
     }
 
+    private Path fichier;
+
     @FXML
-    public void initialize() {
+    public void initialize(BeanDeDameuse beann) throws IOException {
         ColoneDameuses.setCellValueFactory(param -> param.getValue().dameusesProperty());
         ColoneLongitude.setCellValueFactory(param -> param.getValue().longitudeProperty());
         ColoneLatitude.setCellValueFactory(param -> param.getValue().latitudeProperty());
@@ -56,16 +61,20 @@ public class ImplementationDeLinterface {
         //ColoneOrientation.setCellValueFactory(param -> param.getValue().orientationProperty());
         ColoneJour.setCellValueFactory(param -> param.getValue().jourProperty());
         ColoneHeure.setCellValueFactory(param -> param.getValue().heureProperty());
+        TableAffichageDonnees.getItems().setAll(mettreLesDonnees());
     }
 
     public void setUpIfNecessary() throws NullPointerException, IOException {
-        if (BeanDeDameuse != null) {
+        if (beanDeDameuses != null) {
 
         }
+    }
+
+    private BeanDeDameuse mettreLesDonnees() throws IOException {
         BeanRemplissage BR = new BeanRemplissage();
         BR.Remplir();
 
-
+        return BR.Remplir();
     }
 
 }

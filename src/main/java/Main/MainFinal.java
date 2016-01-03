@@ -30,18 +30,24 @@ public class MainFinal extends Application{
 
         simulationSMS(nbIncrementation, generateurDeMessage, lesDameuses, traitement);
 
-        //Thread.sleep(3000);
-        int choix = JOptionPane.showConfirmDialog(null,"Voulez-vous afficher l'historique des dameuses ?");
 
-        choixHistorique(lesDameuses, traitement, choix);
+        traitement.afficheDameuseDisponible(lesDameuses);
 
-        BeanRemplissage BR = new BeanRemplissage();
-        BR.Remplir();
+
+
+
+        for (Dameuse d : lesDameuses.getLesDameuses()){
+            d.lireLhistorique();
+            System.out.println();
+        }
+
+
+
         System.out.println("Application launched");
         launch(args);
     }
 
-    private static void choixHistorique(LesDameuses lesDameuses, Traitement traitement, int choix) throws InterruptedException, IOException {
+    /*private static void choixHistorique(LesDameuses lesDameuses, Traitement traitement, int choix) throws InterruptedException, IOException {
         switch (choix){
             case 0:
                 //oui
@@ -60,7 +66,7 @@ public class MainFinal extends Application{
             default :
                 JOptionPane.showMessageDialog(null,"Merci de votre visite");
         }
-    }
+    }*/
 
     private static void simulationSMS(int nbIncrementation, GenerateurDeMessage generateurDeMessage, LesDameuses lesDameuses, Traitement traitement) throws IOException, InterruptedException {
         int i = 0;
@@ -85,8 +91,11 @@ public class MainFinal extends Application{
         Parent root = fxmlLoader.getRoot();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
+
         stage.setScene(scene);
         stage.show();
+
+
     }
 
 
