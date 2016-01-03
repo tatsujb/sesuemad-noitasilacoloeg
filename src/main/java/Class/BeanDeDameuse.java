@@ -136,54 +136,5 @@ public class BeanDeDameuse {
         this.setHeure(l.get(6));
     }
 
-    private void creationFichier(String nom) throws IOException {
 
-        File fich = new File("./src/Historiques");
-        if (!fich.exists()) {
-            fich.mkdir();
-        }
-
-        this.fichier = Paths.get("./src/Historiques/" + nom + ".txt");
-        String message = "";
-        Files.write(fichier, message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
-
-        fich = new File("./src/Historiques/" + nom + ".txt");
-        if (fich.length() == 0){
-            initialiserFichier();
-        }
-    }
-
-
-
-    public void ecrireDansLhistorique () throws IOException {
-
-        String message = this.toString()+"\n";
-        Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
-    }
-
-    public void initialiserFichier () throws IOException {
-
-        String message = "Historique " + this.getDameuses() + " \n\n";
-        Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
-    }
-
-    public void lireLhistorique () throws IOException {
-
-        Scanner fic = new Scanner(fichier.toFile());
-        do{
-            System.out.println(fic.nextLine());
-        }while (fic.hasNextLine());
-        fic.close();
-    }
-
-    @Override
-    public String toString() {
-        return "BeanDeDameuse{" +
-                "dameuses=" + dameuses +
-                ", longitude=" + longitude +
-                ", latitude=" + latitude +
-                ", jour=" + jour +
-                ", heure=" + heure +
-                '}';
-    }
 }

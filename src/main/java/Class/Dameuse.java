@@ -11,7 +11,7 @@ import java.util.Scanner;
 /**
  * Created by Fabienne_2 on 14/11/2015.
 */
-/*public class Dameuse {
+public class Dameuse {
 
 
     private Donnees donnees;
