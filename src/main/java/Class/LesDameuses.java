@@ -1,6 +1,11 @@
 package Class;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -21,6 +26,17 @@ public class LesDameuses {
 
         this.lesDameuses.put(p_dameuse.getNom(),p_dameuse);
         p_dameuse.ecrireDansLhistorique();
+
+        String adresseFichier="./src/Historiques/historiqueGeneral.txt";
+        File fich = new File(adresseFichier);
+        Path fichier = Paths.get(adresseFichier);
+
+        if (!fich.exists()){
+            String message = "Historique Général\r\n\r\n";
+            Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
+        }
+
+        Files.write(fichier,p_dameuse.toString().getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
 
         Date date = new Date();
         String dateCourante  = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE).format(date);

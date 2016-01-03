@@ -57,13 +57,13 @@ public class Dameuse {
 
     public void ecrireDansLhistorique () throws IOException {
 
-        String message = this.toString()+"\n";
+        String message = this.toString()+"\r\n";
         Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
     }
 
     public void initialiserFichier () throws IOException {
 
-        String message = "Historique " + this.getNom() + " \n\n";
+        String message = "Historique " + this.getNom() + " \r\n\r\n";
         Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
     }
 
@@ -79,6 +79,6 @@ public class Dameuse {
     @Override
     public String toString() {
 
-        return "Dameuse "+ this.getNom() +" : "+ donnees.toString();
+        return "Dameuse "+ this.getNom() +" : "+ donnees.toString()+"\r\n";
     }
 }
