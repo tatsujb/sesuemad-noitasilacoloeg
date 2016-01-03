@@ -17,19 +17,7 @@ import java.util.List;
 public class MainFinal extends Application{
 
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/interface.fxml"));
-        fxmlLoader.load();
-        Parent root = fxmlLoader.getRoot();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-
-    }
 
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -47,6 +35,10 @@ public class MainFinal extends Application{
         int choix = JOptionPane.showConfirmDialog(null,"Voulez-vous afficher l'historique des dameuses ?");
 
         choixHistorique(lesDameuses, traitement, choix);
+
+        BeanRemplissage BR = new BeanRemplissage();
+        BR.Remplir();
+
 
     }
 
@@ -85,6 +77,21 @@ public class MainFinal extends Application{
         } while (i < nbIncrementation);
 
     }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/interface.fxml"));
+        fxmlLoader.load();
+        Parent root = fxmlLoader.getRoot();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+
+    }
+
 
 
 }
