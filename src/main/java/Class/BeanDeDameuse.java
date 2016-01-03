@@ -8,14 +8,8 @@ import javafx.beans.property.SimpleIntegerProperty;*/
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by tatsu on 27/12/2015.
@@ -128,10 +122,8 @@ public class BeanDeDameuse {
 
     public void setDonnees(List<String> l){
         this.setDameuses(l.get(0));
-        this.setLongitude(l.get(2));
         this.setLatitude(l.get(1));
-        //this.setAltitude(l.get(3));
-        //this.setOrientation(l.get(4));
+        this.setLongitude(l.get(2));
         this.setJour(l.get(5));
         this.setHeure(l.get(6));
     }
