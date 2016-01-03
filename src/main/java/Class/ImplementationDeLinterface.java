@@ -62,8 +62,8 @@ public class ImplementationDeLinterface {
         if (BeanDeDameuse != null) {
 
         }
-        //BeanRemplissage BR = new BeanRemplissage();
-        //BR.Remplir();
+        BeanRemplissage BR = new BeanRemplissage();
+        BR.Remplir();
 
 
     }
