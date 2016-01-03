@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class LesDameuses {
 
-    private Map<String,BeanDeDameuse> lesBeanDeDameuses;
+    private Map<String,BeanDeDameuse> lesDameuses;
 
     public LesDameuses() {
         this.lesDameuses = new HashMap<String, BeanDeDameuse>();
@@ -24,7 +24,7 @@ public class LesDameuses {
         if (p_dameuse == null)
             throw new IllegalArgumentException("Paramètre invalide, dameuse erronée");
 
-        this.lesBeanDeDameuses.put(p_dameuse.getDameuses(),p_dameuse);
+        this.lesDameuses.put(p_dameuse.getDameuses(),p_dameuse);
         p_dameuse.ecrireDansLhistorique();
 
         String adresseFichier="./src/Historiques/historiqueGeneral.txt";
@@ -50,13 +50,13 @@ public class LesDameuses {
 
 
     public Collection<BeanDeDameuse> getLesBeanDeDameuses() {
-        return lesBeanDeDameuses.values();
+        return lesDameuses.values();
     }
 
     @Override
     public String toString() {
         String resultat = "";
-        for (BeanDeDameuse d : this.lesBeanDeDameuses.values()){
+        for (BeanDeDameuse d : this.lesDameuses.values()){
             resultat += d.toString()+"\n";
         }
         return resultat;
