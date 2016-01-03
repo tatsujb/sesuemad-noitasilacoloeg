@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.io.IOException;
 import java.util.List;
 
 import static javafx.collections.FXCollections.observableArrayList;
@@ -57,21 +58,14 @@ public class ImplementationDeLinterface {
         ColoneHeure.setCellValueFactory(param -> param.getValue().heureProperty());
     }
 
-    public void setUpIfNecessary() throws NullPointerException{
+    public void setUpIfNecessary() throws NullPointerException, IOException {
         if (BeanDeDameuse != null) {
 
         }
+        //BeanRemplissage BR = new BeanRemplissage();
+        //BR.Remplir();
 
-/*
-        BeanRemplissage.Remplir().thenAccept(BeanDeDameuse1 -> {
-            if(ImplementationDeLinterface.this.BeanDeDameuse = NULL){
-                throw new NullPointerException("woops!");
-            }else{
-            ImplementationDeLinterface.this.BeanDeDameuse = (List)BeanDeDameuse1;
-            filteredList = new FilteredList<>(observableArrayList((List)BeanDeDameuse1));
-            TableAffichageDonnees.setItems(filteredList);
-            }
-        });*/
+
     }
 
 }

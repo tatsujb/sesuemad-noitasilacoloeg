@@ -21,8 +21,7 @@ public class MainFinal extends Application{
 
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        System.out.println("Application launched");
-        launch(args);
+
         final int nbIncrementation = 2;
 
         GenerateurDeMessage generateurDeMessage = new GenerateurDeMessage();
@@ -38,6 +37,8 @@ public class MainFinal extends Application{
 
         BeanRemplissage BR = new BeanRemplissage();
         BR.Remplir();
+        System.out.println("Application launched");
+        launch(args);
     }
 
     private static void choixHistorique(LesDameuses lesDameuses, Traitement traitement, int choix) throws InterruptedException, IOException {
