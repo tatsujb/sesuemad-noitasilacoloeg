@@ -1,5 +1,8 @@
 package Class;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,10 +16,11 @@ import java.util.Scanner;
 public class BeanRemplissage {
 
     private Path fichier;
+    private ObservableList<BeanDeDameuse> bean = FXCollections.observableArrayList();
 
-    public BeanDeDameuse Remplir() throws IOException {
+    public BeanRemplissage() throws IOException {
 
-        BeanDeDameuse bean = new BeanDeDameuse();
+
         Traitement traitmnt = new Traitement();
 
 
@@ -25,15 +29,23 @@ public class BeanRemplissage {
         fic.nextLine();
         fic.nextLine();
         do{
+            int i =0;
             List<String> liste=traitmnt.traitement(fic.nextLine());
             if (liste.size()>5) {
                 System.out.println(liste);
-                bean.setDonnees(liste);
+                bean.get(i).setDonnees(liste);
+                i++;
             }
         }while (fic.hasNextLine());
         System.out.println();
         fic.close();
 
+
+    }
+
+
+
+    public ObservableList<BeanDeDameuse> getbean() {
         return bean;
     }
 }

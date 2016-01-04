@@ -1,9 +1,6 @@
 package Class;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Fabienne_2 on 14/11/2015.

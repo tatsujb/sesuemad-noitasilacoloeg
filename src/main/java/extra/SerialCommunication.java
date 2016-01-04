@@ -1,16 +1,11 @@
 package extra;
 
 import gnu.io.*;
-import java.awt.Color;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
-import java.util.TooManyListenersException;
+import java.util.*;
 
 public class SerialCommunication implements SerialPortEventListener{
 	
@@ -168,7 +163,7 @@ public class SerialCommunication implements SerialPortEventListener{
 	  }
 	  public void connect()
 	    {
-	        String selectedPort = "COM3";
+	        String selectedPort = "COM4";
 	        this.rechercheDesPorts();
 	        selectedPortIdentifier = (CommPortIdentifier)portMap.get(selectedPort);
 
