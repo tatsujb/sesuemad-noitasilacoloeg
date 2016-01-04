@@ -1,8 +1,7 @@
 package Main;
 
 import Class.*;
-import extra.SerialCommunication;
-import gnu.io.RXTXCommDriver;
+import Class.SerialCommunication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,8 +10,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Scanner;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by Fabienne_2 on 15/11/2015.

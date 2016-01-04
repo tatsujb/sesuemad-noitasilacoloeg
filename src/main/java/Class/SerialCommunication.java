@@ -1,4 +1,4 @@
-package extra;
+package Class;
 
 import gnu.io.*;
 

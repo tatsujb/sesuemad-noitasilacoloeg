@@ -4,7 +4,7 @@ package Main;
  * Created by Fabienne_2 on 04/01/2016.
  */
 
-import extra.SerialCommunication;
+import Class.SerialCommunication;
 
 public class testr
 {
