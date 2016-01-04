@@ -23,12 +23,12 @@ public class MainFinal extends Application{
         LesDameuses lesDameuses = new LesDameuses();
         Traitement traitement = new Traitement();
 
-        SerialCommunication communicator = new SerialCommunication();
+        /*SerialCommunication communicator = new SerialCommunication();
         communicator.connect();
         if (communicator.initIOStream() == true) {
             communicator.initListener();
         }
-        while (Scanner ) {
+        while (true) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -36,34 +36,34 @@ public class MainFinal extends Application{
             }
             System.out.println(communicator.getLastSMS());
             if(communicator.getLastSMS()!=".") {
+*/
+                final int nbIncrementation = 2;
 
-                //final int nbIncrementation = 2;
-
-                //  GenerateurDeMessage generateurDeMessage = new GenerateurDeMessage();
+                GenerateurDeMessage generateurDeMessage = new GenerateurDeMessage();
 
 
-                simulationSMS(/*nbIncrementation,*/ communicator.getLastSMS(), lesDameuses, traitement);
+                simulationSMS(nbIncrementation, generateurDeMessage, lesDameuses, traitement);
 
 
                 traitement.afficheDameuseDisponible(lesDameuses);
-            }else {
-                System.out.println("pas de message");
-            }
+
+
+
 
             //fonctionne pas hors du while
-           /*for (Dameuse d : lesDameuses.getLesDameuses()) {
+           for (Dameuse d : lesDameuses.getLesDameuses()) {
                 d.lireLhistorique();
                 System.out.println();
-            }*/
+            }
 
 
-
+            System.out.println("Application launched");
+            launch(args);
         }
 
-        System.out.println("Application launched");
-        launch(args);
 
-    }
+
+
     /*private static void choixHistorique(LesDameuses lesDameuses, Traitement traitement, int choix) throws InterruptedException, IOException {
         switch (choix){
             case 0:
@@ -85,20 +85,18 @@ public class MainFinal extends Application{
         }
     }*/
 
-    private static void simulationSMS(/*int nbIncrementation,GenerateurDeMessage generateurDeMessage,*/String sms, LesDameuses lesDameuses, Traitement traitement) throws IOException, InterruptedException {
+    private static void simulationSMS(int nbIncrementation, GenerateurDeMessage generateurDeMessage, LesDameuses lesDameuses, Traitement traitement) throws IOException, InterruptedException {
         int i = 0;
 
-       // do {
-            //String sms = generateurDeMessage.genereMessage();
-
+        do {
+            String sms = generateurDeMessage.genereMessage();
             List<String> message = traitement.traitement(sms);
             Dameuse dameuse = new Dameuse(new Donnees(message));
 
             lesDameuses.ajouterDameuse(dameuse);
-        System.out.println(lesDameuses);
-            //i++;
-            //Thread.sleep(1000);
-        //} while (i < nbIncrementation);
+            i++;
+            Thread.sleep(1000);
+        } while (i < nbIncrementation);
 
     }
 
