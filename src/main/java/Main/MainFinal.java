@@ -1,6 +1,9 @@
 package Main;
 
-import Class.*;
+import Class.Dameuse;
+import Class.Donnees;
+import Class.LesDameuses;
+import Class.Traitement;
 import extra.SerialCommunication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +13,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by Fabienne_2 on 15/11/2015.
@@ -28,7 +30,7 @@ public class MainFinal extends Application{
         if (communicator.initIOStream() == true) {
             communicator.initListener();
         }
-        while (Scanner ) {
+        while (true ) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -46,8 +48,6 @@ public class MainFinal extends Application{
 
 
                 traitement.afficheDameuseDisponible(lesDameuses);
-            }else {
-                System.out.println("pas de message");
             }
 
             //fonctionne pas hors du while
@@ -59,9 +59,9 @@ public class MainFinal extends Application{
 
 
         }
-
+/*
         System.out.println("Application launched");
-        launch(args);
+        launch(args);*/
 
     }
     /*private static void choixHistorique(LesDameuses lesDameuses, Traitement traitement, int choix) throws InterruptedException, IOException {
@@ -92,10 +92,11 @@ public class MainFinal extends Application{
             //String sms = generateurDeMessage.genereMessage();
 
             List<String> message = traitement.traitement(sms);
+            System.out.println(sms);
             Dameuse dameuse = new Dameuse(new Donnees(message));
 
             lesDameuses.ajouterDameuse(dameuse);
-        System.out.println(lesDameuses);
+            System.out.println(lesDameuses);
             //i++;
             //Thread.sleep(1000);
         //} while (i < nbIncrementation);
