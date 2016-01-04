@@ -38,19 +38,17 @@ public class ImplementationDeLinterface {
     @FXML
     TableColumn<BeanDeDameuse, String> ColoneHeure;
 
-    private List<BeanDeDameuse> beanDeDameuses;
+    /*private BeanRemplissage beanRemplissage;
+    public ImplementationDeLinterface() throws IOException {
 
-    private FilteredList<BeanDeDameuse> filteredList;
+        beanRemplissage = new BeanRemplissage();
+    }*/
 
-    public ImplementationDeLinterface() {
-        System.out.println("Interface instantiated");
-    }
-
-    private Path fichier;
 
     @FXML
     public void initialize() throws IOException {
         setBeanRemplissage(new BeanRemplissage());
+        //FilteredList<BeanDeDameuse> filteredList = new FilteredList<>(beanRemplissage.getBeans(), p -> true);
         ColoneDameuses.setCellValueFactory(param -> param.getValue().dameusesProperty()); //param -> celldata
         ColoneLongitude.setCellValueFactory(param -> param.getValue().longitudeProperty());
         ColoneLatitude.setCellValueFactory(param -> param.getValue().latitudeProperty());
@@ -62,14 +60,12 @@ public class ImplementationDeLinterface {
 
     }
 
-    public void setUpIfNecessary() throws NullPointerException, IOException {
-        if (beanDeDameuses != null) {
-
-        }
-    }
-
     public void setBeanRemplissage(BeanRemplissage beanRemplissage) {
         // Add observable list data to the table
-        TableAffichageDonnees.setItems(beanRemplissage.getbean());
+        TableAffichageDonnees.setItems(beanRemplissage.getBeans());
+    }
+
+    public void ActiverParJour(){
+
     }
 }

@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class BeanRemplissage {
 
     private Path fichier;
-    private ObservableList<BeanDeDameuse> beans = FXCollections.observableArrayList();
+    public ObservableList<BeanDeDameuse> beans = FXCollections.observableArrayList();
 
     public BeanRemplissage() throws IOException {
 
@@ -49,7 +49,7 @@ public class BeanRemplissage {
 
 
 
-    public ObservableList<BeanDeDameuse> getbean() {
+    public ObservableList<BeanDeDameuse> getBeans() {
         return beans;
     }
 }
