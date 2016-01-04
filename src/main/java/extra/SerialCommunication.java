@@ -163,7 +163,7 @@ public class SerialCommunication implements SerialPortEventListener{
 	  }
 	  public void connect()
 	    {
-	        String selectedPort = "COM4";
+	        String selectedPort = "COM3"; //Fabienne "COM4" Jacques et Loic "COM3"
 	        this.rechercheDesPorts();
 	        selectedPortIdentifier = (CommPortIdentifier)portMap.get(selectedPort);
 

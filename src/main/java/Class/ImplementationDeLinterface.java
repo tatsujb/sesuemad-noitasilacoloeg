@@ -49,8 +49,8 @@ public class ImplementationDeLinterface {
     private Path fichier;
 
     @FXML
-    public void initialize(BeanDeDameuse beann) throws IOException {
-        setBeanRemplissage(beanRemplissage);
+    public void initialize() throws IOException {
+        setBeanRemplissage(new BeanRemplissage());
         ColoneDameuses.setCellValueFactory(param -> param.getValue().dameusesProperty()); //param -> celldata
         ColoneLongitude.setCellValueFactory(param -> param.getValue().longitudeProperty());
         ColoneLatitude.setCellValueFactory(param -> param.getValue().latitudeProperty());
@@ -58,7 +58,7 @@ public class ImplementationDeLinterface {
         //ColoneOrientation.setCellValueFactory(param -> param.getValue().orientationProperty());
         ColoneJour.setCellValueFactory(param -> param.getValue().jourProperty());
         ColoneHeure.setCellValueFactory(param -> param.getValue().heureProperty());
-        //TableAffichageDonnees.getItems().setAll(mettreLesDonnees());
+
 
     }
 
@@ -68,14 +68,8 @@ public class ImplementationDeLinterface {
         }
     }
 
-    private BeanRemplissage beanRemplissage;
-
     public void setBeanRemplissage(BeanRemplissage beanRemplissage) {
-        this.beanRemplissage = beanRemplissage;
-
         // Add observable list data to the table
         TableAffichageDonnees.setItems(beanRemplissage.getbean());
     }
-
-
 }

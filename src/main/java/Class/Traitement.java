@@ -18,7 +18,7 @@ public class Traitement {
         String chaineTemporaire ="";
 
         for (int i=0; i<p_message.length(); i++) {
-            if (p_message.charAt(i) == '|') {
+            if (p_message.charAt(i) == ' ') {
                 donnees.add(chaineTemporaire);
                 chaineTemporaire = "";
             } else {

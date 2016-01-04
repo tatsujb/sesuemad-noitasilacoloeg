@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class BeanRemplissage {
 
     private Path fichier;
-    private ObservableList<BeanDeDameuse> bean = FXCollections.observableArrayList();
+    private ObservableList<BeanDeDameuse> beans = FXCollections.observableArrayList();
 
     public BeanRemplissage() throws IOException {
 
@@ -24,7 +24,7 @@ public class BeanRemplissage {
         Traitement traitmnt = new Traitement();
 
 
-        this.fichier = Paths.get("./src/Historiques/dam0.txt");
+        this.fichier = Paths.get("./src/Historiques/historiqueGeneral.txt");
         Scanner fic = new Scanner(fichier.toFile());
         fic.nextLine();
         fic.nextLine();
@@ -33,7 +33,11 @@ public class BeanRemplissage {
             List<String> liste=traitmnt.traitement(fic.nextLine());
             if (liste.size()>5) {
                 System.out.println(liste);
-                bean.get(i).setDonnees(liste);
+
+                BeanDeDameuse beanDeDameuse = new BeanDeDameuse();
+                beanDeDameuse.setDonnees(liste);
+
+                beans.add(beanDeDameuse);
                 i++;
             }
         }while (fic.hasNextLine());
@@ -46,6 +50,6 @@ public class BeanRemplissage {
 
 
     public ObservableList<BeanDeDameuse> getbean() {
-        return bean;
+        return beans;
     }
 }
