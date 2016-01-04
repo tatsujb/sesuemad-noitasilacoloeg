@@ -44,7 +44,7 @@ public class ImplementationDeLinterface {
         beanRemplissage = new BeanRemplissage();
     }*/
 
-
+    //http://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/
     @FXML
     public void initialize() throws IOException {
         setBeanRemplissage(new BeanRemplissage());
