@@ -38,19 +38,17 @@ public class ImplementationDeLinterface {
     @FXML
     TableColumn<BeanDeDameuse, String> ColoneHeure;
 
-    private List<BeanDeDameuse> beanDeDameuses;
+    /*private BeanRemplissage beanRemplissage;
+    public ImplementationDeLinterface() throws IOException {
 
-    private FilteredList<BeanDeDameuse> filteredList;
+        beanRemplissage = new BeanRemplissage();
+    }*/
 
-    public ImplementationDeLinterface() {
-        System.out.println("Interface instantiated");
-    }
-
-    private Path fichier;
-
+    //http://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/
     @FXML
-    public void initialize(BeanDeDameuse beann) throws IOException {
-        setBeanRemplissage(beanRemplissage);
+    public void initialize() throws IOException {
+        setBeanRemplissage(new BeanRemplissage());
+        //FilteredList<BeanDeDameuse> filteredList = new FilteredList<>(beanRemplissage.getBeans(), p -> true);
         ColoneDameuses.setCellValueFactory(param -> param.getValue().dameusesProperty()); //param -> celldata
         ColoneLongitude.setCellValueFactory(param -> param.getValue().longitudeProperty());
         ColoneLatitude.setCellValueFactory(param -> param.getValue().latitudeProperty());
@@ -58,24 +56,16 @@ public class ImplementationDeLinterface {
         //ColoneOrientation.setCellValueFactory(param -> param.getValue().orientationProperty());
         ColoneJour.setCellValueFactory(param -> param.getValue().jourProperty());
         ColoneHeure.setCellValueFactory(param -> param.getValue().heureProperty());
-        //TableAffichageDonnees.getItems().setAll(mettreLesDonnees());
+
 
     }
-
-    public void setUpIfNecessary() throws NullPointerException, IOException {
-        if (beanDeDameuses != null) {
-
-        }
-    }
-
-    private BeanRemplissage beanRemplissage;
 
     public void setBeanRemplissage(BeanRemplissage beanRemplissage) {
-        this.beanRemplissage = beanRemplissage;
-
         // Add observable list data to the table
-        TableAffichageDonnees.setItems(beanRemplissage.getbean());
+        TableAffichageDonnees.setItems(beanRemplissage.getBeans());
     }
 
+    public void ActiverParJour(){
 
+    }
 }

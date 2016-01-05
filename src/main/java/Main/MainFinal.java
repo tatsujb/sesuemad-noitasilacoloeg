@@ -1,10 +1,7 @@
 package Main;
 
-import Class.Dameuse;
-import Class.Donnees;
-import Class.LesDameuses;
-import Class.Traitement;
-import extra.SerialCommunication;
+import Class.*;
+import Class.SerialCommunication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,9 +14,10 @@ import java.util.List;
 /**
  * Created by Fabienne_2 on 15/11/2015.
  */
-public class MainFinal extends Application{
+public class MainFinal extends Application {
 
 
+    private static boolean stop;
 
     public static void main(String[] args) throws IOException, InterruptedException {
         LesDameuses lesDameuses = new LesDameuses();
@@ -30,39 +28,49 @@ public class MainFinal extends Application{
         if (communicator.initIOStream() == true) {
             communicator.initListener();
         }
-        while (true ) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println(communicator.getLastSMS());
-            if(communicator.getLastSMS()!=".") {
-
-                //final int nbIncrementation = 2;
-
-                //  GenerateurDeMessage generateurDeMessage = new GenerateurDeMessage();
-
-
-                simulationSMS(/*nbIncrementation,*/ communicator.getLastSMS(), lesDameuses, traitement);
-
-
-                traitement.afficheDameuseDisponible(lesDameuses);
-            }
-
-            //fonctionne pas hors du while
-           /*for (Dameuse d : lesDameuses.getLesDameuses()) {
-                d.lireLhistorique();
-                System.out.println();
-            }*/
-
-
-
-        }
-/*
         System.out.println("Application launched");
-        launch(args);*/
 
+
+        Thread thread = new Thread(() -> {
+            while (!stop) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(communicator.getLastSMS());
+                if (communicator.getLastSMS() != ".") {
+
+                    //final int nbIncrementation = 2;
+
+                    //  GenerateurDeMessage generateurDeMessage = new GenerateurDeMessage();
+
+
+                    try {
+                        simulationSMS(/*nbIncrementation,*/ communicator.getLastSMS(), lesDameuses, traitement);
+                    } catch (IOException | InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+
+
+                    traitement.afficheDameuseDisponible(lesDameuses);
+                } else {
+                    System.out.println("pas de message");
+                }
+
+                //fonctionne pas hors du while
+       /*for (Dameuse d : lesDameuses.getLesDameuses()) {
+            d.lireLhistorique();
+            System.out.println();
+        }*/
+            }
+        });
+        thread.start();
+
+        launch(args);
+        stop = true;
+
+        communicator.disconnect();
     }
     /*private static void choixHistorique(LesDameuses lesDameuses, Traitement traitement, int choix) throws InterruptedException, IOException {
         switch (choix){
@@ -88,17 +96,16 @@ public class MainFinal extends Application{
     private static void simulationSMS(/*int nbIncrementation,GenerateurDeMessage generateurDeMessage,*/String sms, LesDameuses lesDameuses, Traitement traitement) throws IOException, InterruptedException {
         int i = 0;
 
-       // do {
-            //String sms = generateurDeMessage.genereMessage();
+        // do {
+        //String sms = generateurDeMessage.genereMessage();
 
-            List<String> message = traitement.traitement(sms);
-            System.out.println(sms);
-            Dameuse dameuse = new Dameuse(new Donnees(message));
+        List<String> message = traitement.traitement(sms);
+        Dameuse dameuse = new Dameuse(new Donnees(message));
 
-            lesDameuses.ajouterDameuse(dameuse);
-            System.out.println(lesDameuses);
-            //i++;
-            //Thread.sleep(1000);
+        lesDameuses.ajouterDameuse(dameuse);
+        System.out.println(lesDameuses);
+        //i++;
+        //Thread.sleep(1000);
         //} while (i < nbIncrementation);
 
     }
@@ -117,7 +124,6 @@ public class MainFinal extends Application{
 
 
     }
-
 
 
 }
