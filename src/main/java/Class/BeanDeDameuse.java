@@ -18,7 +18,7 @@ public class BeanDeDameuse {
     private StringProperty latitude;
     //private StringProperty altitude;
     //private StringProperty orientation;
-    private StringProperty jour;
+    private StringProperty date;
     private StringProperty heure;
 
     private Path fichier;
@@ -29,7 +29,7 @@ public class BeanDeDameuse {
         latitude = new SimpleStringProperty();
         //altitude = new SimpleStringProperty();
         //orientation = new SimpleStringProperty();
-        jour = new SimpleStringProperty();
+        date = new SimpleStringProperty();
         heure = new SimpleStringProperty();
     }
 
@@ -93,16 +93,16 @@ public class BeanDeDameuse {
         this.orientation.set(orientation);
     }*/
 
-    public String getJour() {
-        return jour.get();
+    public String getDate() {
+        return date.get();
     }
 
-    public StringProperty jourProperty() {
-        return jour;
+    public StringProperty dateProperty() {
+        return date;
     }
 
-    public void setJour(String jour) {
-        this.jour.set(jour);
+    public void setDate(String date) {
+        this.date.set(date);
     }
 
     public String getHeure() {
@@ -123,7 +123,7 @@ public class BeanDeDameuse {
         this.setLongitude(l.get(12));
         //this.setAltitude(l.get(3));
         //this.setOrientation(l.get(4));
-        this.setJour(l.get(3));
+        this.setDate(l.get(3));
         this.setHeure(l.get(6));
     }
 

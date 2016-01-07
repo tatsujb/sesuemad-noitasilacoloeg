@@ -1,7 +1,6 @@
 package Main;
 
 import Class.*;
-import Class.SerialCommunication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,31 +37,31 @@ public class MainFinal extends Application {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println(communicator.getLastSMS());
-                if (communicator.getLastSMS() != ".") {
+                String sms=communicator.getLastSMS();
+                if (sms != ".") {
 
-                    //final int nbIncrementation = 2;
+                    System.out.println(sms);
 
-                    //  GenerateurDeMessage generateurDeMessage = new GenerateurDeMessage();
-
-
+                    List<String> message = traitement.traitement(sms);
+                    Dameuse dameuse = null;
                     try {
-                        simulationSMS(/*nbIncrementation,*/ communicator.getLastSMS(), lesDameuses, traitement);
-                    } catch (IOException | InterruptedException e) {
-                        throw new RuntimeException(e);
+                        dameuse = new Dameuse(new Donnees(message));
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
 
+                    try {
+                        lesDameuses.ajouterDameuse(dameuse);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                    traitement.afficheDameuseDisponible(lesDameuses);
+                    //System.out.println(lesDameuses);
+
+                    //traitement.afficheDameuseDisponible(lesDameuses);
                 } else {
                     System.out.println("pas de message");
                 }
-
-                //fonctionne pas hors du while
-       /*for (Dameuse d : lesDameuses.getLesDameuses()) {
-            d.lireLhistorique();
-            System.out.println();
-        }*/
             }
         });
         thread.start();
@@ -71,44 +70,9 @@ public class MainFinal extends Application {
         stop = true;
 
         communicator.disconnect();
-    }
-    /*private static void choixHistorique(LesDameuses lesDameuses, Traitement traitement, int choix) throws InterruptedException, IOException {
-        switch (choix){
-            case 0:
-                //oui
-                //traitement.traitementEnCours(1000);
-                traitement.afficheDameuseDisponible(lesDameuses);
-
-                //traitement.traitementEnCours(1000);
+    } //  JOptionPane.showMessageDialog(null,"Merci de votre visite");
 
 
-                for (Dameuse d : lesDameuses.getLesDameuses()){
-                    d.lireLhistorique();
-                    System.out.println();
-                }
-
-                break;
-            default :
-                JOptionPane.showMessageDialog(null,"Merci de votre visite");
-        }
-    }*/
-
-    private static void simulationSMS(/*int nbIncrementation,GenerateurDeMessage generateurDeMessage,*/String sms, LesDameuses lesDameuses, Traitement traitement) throws IOException, InterruptedException {
-        int i = 0;
-
-        // do {
-        //String sms = generateurDeMessage.genereMessage();
-
-        List<String> message = traitement.traitement(sms);
-        Dameuse dameuse = new Dameuse(new Donnees(message));
-
-        lesDameuses.ajouterDameuse(dameuse);
-        System.out.println(lesDameuses);
-        //i++;
-        //Thread.sleep(1000);
-        //} while (i < nbIncrementation);
-
-    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {

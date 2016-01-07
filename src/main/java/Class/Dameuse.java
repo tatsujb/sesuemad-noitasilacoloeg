@@ -57,7 +57,7 @@ public class Dameuse {
 
     public void ecrireDansLhistorique () throws IOException {
 
-        String message = this.toString()+"\r\n";
+        String message = this.toString();
         Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
     }
 
@@ -79,6 +79,6 @@ public class Dameuse {
     @Override
     public String toString() {
 
-        return "Dameuse "+ this.getNom() +" : "+ donnees.toString()+"\r\n";
+        return "Dameuse "+ this.getNom() +" : "+ donnees.toString()+"\r\n\r\n";
     }
 }

@@ -18,6 +18,7 @@ public class BeanRemplissage {
     private Path fichier;
     public ObservableList<BeanDeDameuse> beans = FXCollections.observableArrayList();
 
+
     public BeanRemplissage() throws IOException {
 
 
@@ -29,25 +30,20 @@ public class BeanRemplissage {
         fic.nextLine();
         fic.nextLine();
         do{
-            int i =0;
-            List<String> liste=traitmnt.traitement(fic.nextLine());
+            List<String> liste=traitmnt.separeLesDonneesBean(fic.nextLine());
             if (liste.size()>5) {
-                System.out.println(liste);
-
+                //System.out.println(liste);
                 BeanDeDameuse beanDeDameuse = new BeanDeDameuse();
                 beanDeDameuse.setDonnees(liste);
-
                 beans.add(beanDeDameuse);
-                i++;
             }
         }while (fic.hasNextLine());
-        System.out.println();
         fic.close();
-
-
     }
 
-
+    /*public void filtrageBeanAujourdhui(){
+        beans.filtered(beanDeDameuse -> )
+    }*/
 
     public ObservableList<BeanDeDameuse> getBeans() {
         return beans;
