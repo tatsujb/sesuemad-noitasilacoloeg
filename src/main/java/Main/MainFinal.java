@@ -19,6 +19,8 @@ public class MainFinal extends Application {
     private static boolean stop;
 
     public static void main(String[] args) throws IOException, InterruptedException {
+        MainController main = new MainController();
+        ImplementationDeLinterface impl = new ImplementationDeLinterface();
         LesDameuses lesDameuses = new LesDameuses();
         Traitement traitement = new Traitement();
 
@@ -55,30 +57,26 @@ public class MainFinal extends Application {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                     //System.out.println(lesDameuses);
-
-                    //traitement.afficheDameuseDisponible(lesDameuses);
-                } else {
-                    System.out.println("pas de message");
+                    traitement.afficheDameuseDisponible(lesDameuses);
                 }
             }
         });
         thread.start();
 
         launch(args);
+
         stop = true;
 
         communicator.disconnect();
     } //  JOptionPane.showMessageDialog(null,"Merci de votre visite");
 
-
-
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/interface.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/mainControler.fxml"));
         fxmlLoader.load();
+        //messageViewController= (MessageViewController) fxmlLoader.getController();
         Parent root = fxmlLoader.getRoot();
         Stage stage = new Stage();
         Scene scene = new Scene(root);

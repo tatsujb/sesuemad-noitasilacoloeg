@@ -4,11 +4,15 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by tatsu on 27/12/2015.
@@ -17,6 +21,9 @@ public class ImplementationDeLinterface {
 
     @FXML
     TextField motCle;
+
+    @FXML
+    CheckBox ParJour;
 
     @FXML
     TableView<BeanDeDameuse> TableAffichageDonnees;
@@ -77,7 +84,12 @@ public class ImplementationDeLinterface {
         ObservableList<BeanDeDameuse> temp = truc.getBeans();
         FilteredList<BeanDeDameuse> BeanTrie = new FilteredList<>(temp, p -> true);
 
-        // 2. Set the filter Predicate whenever the filter changes.
+
+        //truc = motCle.addEventFilter(KeyEvent.KEY_TYPED, motCle.textProperty().addListener(t );//motCle(textField.getText().toString())); //new EventHandler<KeyEvent>(),
+                /*new EventHandler<KeyEvent>() {
+                    public void handle(KeyEvent) { null };
+                });*/
+
         motCle.textProperty().addListener((observable, oldValue, newValue) -> {
             BeanTrie.setPredicate(beanDeDameusePredicate -> {
 
@@ -91,11 +103,12 @@ public class ImplementationDeLinterface {
                 } else if (beanDeDameusePredicate.getDate().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter par date
                 } else if (beanDeDameusePredicate.getHeure().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter par date
+                    return true; // Filter par heure
                 }
-                return false; // Does not match.
+                return false; // aucun resultats
             });
         });
+
         SortedList<BeanDeDameuse> resultatBeanTrie = new SortedList<>(BeanTrie);
 
         resultatBeanTrie.comparatorProperty().bind(TableAffichageDonnees.comparatorProperty());
@@ -103,8 +116,34 @@ public class ImplementationDeLinterface {
         TableAffichageDonnees.setItems(resultatBeanTrie);
     }
 
-    public void ActiverParJour(){
+    public void ActiverParJour() throws IOException {
+        BeanRemplissage truc = new BeanRemplissage();
+        ObservableList<BeanDeDameuse> temp = truc.getBeans();
+        FilteredList<BeanDeDameuse> BeanTrie = new FilteredList<>(temp, p -> true);
+        //boolean coche = false;
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        String dateDuJour = dateFormat.format(date);
+        ParJour.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            BeanTrie.setPredicate(beanDeDameusePredicate -> {
+                if (newValue && beanDeDameusePredicate.getHeure().contains(dateDuJour)) {
+                    return true;
+                }
+                return false;
 
+
+            });
+        });
+        SortedList<BeanDeDameuse> resultatBeanTrie = new SortedList<>(BeanTrie);
+
+        resultatBeanTrie.comparatorProperty().bind(TableAffichageDonnees.comparatorProperty());
+
+        TableAffichageDonnees.setItems(resultatBeanTrie);
+
+    }
+
+    public void sousRafraichir() throws IOException {
+        initialize();
     }
 
 

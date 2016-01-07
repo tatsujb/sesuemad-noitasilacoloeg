@@ -5,12 +5,12 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Class.ImplementationDeLinterface">
+<VBox fx:id="ImplementationDeLinterface" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Class.ImplementationDeLinterface">
     <children>
         <HBox fx:id="Fenetre" alignment="CENTER_LEFT" prefHeight="90.0" prefWidth="200.0" spacing="30.0">
             <children>
                 <CheckBox mnemonicParsing="false" text="Par Dameuse" />
-                <CheckBox mnemonicParsing="false" onAction="#ActiverParJour" text="Aujourd'hui" />
+                <CheckBox fx:id="ParJour" mnemonicParsing="false" onAction="#ActiverParJour" text="Aujourd'hui" />
             <Label text="Recherche" />
             <TextField fx:id="motCle" />
             </children>
