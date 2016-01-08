@@ -30,6 +30,7 @@ public class MainFinal extends Application {
             communicator.initListener();
         }
         System.out.println("Application launched");
+        System.out.println();
 
 
         Thread thread = new Thread(() -> {
@@ -42,23 +43,30 @@ public class MainFinal extends Application {
                 String sms=communicator.getLastSMS();
                 if (sms != ".") {
 
-                    System.out.println(sms);
+                    //System.out.println(sms);
 
                     List<String> message = traitement.traitement(sms);
                     Dameuse dameuse = null;
-                    try {
-                        dameuse = new Dameuse(new Donnees(message));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
 
-                    try {
-                        lesDameuses.ajouterDameuse(dameuse);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    Donnees donnees = new Donnees(message);
+                    if(donnees.getIdentifiantDameuse()!=null) {
+                        try {
+                            dameuse = new Dameuse(donnees);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            lesDameuses.ajouterDameuse(dameuse);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                     //System.out.println(lesDameuses);
                     traitement.afficheDameuseDisponible(lesDameuses);
+                    System.out.println();
+                    System.out.println();
                 }
             }
         });
@@ -74,7 +82,7 @@ public class MainFinal extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/mainControler.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/interface.fxml"));
         fxmlLoader.load();
         //messageViewController= (MessageViewController) fxmlLoader.getController();
         Parent root = fxmlLoader.getRoot();

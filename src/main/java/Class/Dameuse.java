@@ -23,8 +23,12 @@ public class Dameuse {
 
 
     public Dameuse(Donnees donnees) throws IOException {
-        this.setDonnees(donnees);
-        creationFichier(this.getNom());
+        if (donnees.getIdentifiantDameuse()!=null) {
+            this.setDonnees(donnees);
+            creationFichier(this.getNom());
+        }else{
+            System.out.println("element null");
+        }
     }
 
     private void creationFichier(String nom) throws IOException {
@@ -57,7 +61,7 @@ public class Dameuse {
 
     public void ecrireDansLhistorique () throws IOException {
 
-        String message = this.toString();
+        String message = this.toString()+"\r\n\r\n";
         Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
     }
 
@@ -79,6 +83,6 @@ public class Dameuse {
     @Override
     public String toString() {
 
-        return "Dameuse "+ this.getNom() +" : "+ donnees.toString()+"\r\n\r\n";
+        return "Dameuse "+ this.getNom() +" : "+ donnees.toString();
     }
 }

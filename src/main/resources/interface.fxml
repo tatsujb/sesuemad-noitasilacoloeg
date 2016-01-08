@@ -5,31 +5,38 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="ImplementationDeLinterface" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Class.ImplementationDeLinterface">
+<VBox fx:id="ImplementationDeLinterface" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="750.0" prefHeight="700.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Class.ImplementationDeLinterface">
     <children>
-        <HBox fx:id="Fenetre" alignment="CENTER_LEFT" prefHeight="90.0" prefWidth="200.0" spacing="30.0">
-            <children>
-                <CheckBox mnemonicParsing="false" text="Par Dameuse" />
-                <CheckBox fx:id="ParJour" mnemonicParsing="false" onAction="#ActiverParJour" text="Aujourd'hui" />
-            <Label text="Recherche" />
-            <TextField fx:id="motCle" />
-            </children>
-            <padding>
-                <Insets left="30.0" />
-            </padding>
-        </HBox>
-        <ScrollPane fitToHeight="true" VBox.vgrow="ALWAYS">
-            <content>
-                  <TableView fx:id="TableAffichageDonnees" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="400.0" prefWidth="645.0">
-                      <columns>
-                          <TableColumn fx:id="ColoneDameuses" prefWidth="75.0" text="Dameuse" />
-                          <TableColumn fx:id="ColoneLongitude" maxWidth="1.7976931348623157E308" minWidth="110.0" prefWidth="194.0" text="Longitude" />
-                          <TableColumn fx:id="ColoneLatitude" minWidth="110.0" prefWidth="157.0" text="Latitude" />
-                          <TableColumn fx:id="ColoneDate" prefWidth="74.0" text="Date" />
-                          <TableColumn fx:id="ColoneHeure" prefWidth="143.0" text="Heure" />
-                      </columns>
-                  </TableView>
-            </content>
-        </ScrollPane>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+         <children>
+              <HBox fx:id="Fenetre" alignment="CENTER_RIGHT" spacing="30.0">
+                  <children>
+                      <CheckBox mnemonicParsing="false" text="Par Dameuse" visible="false" />
+                      <CheckBox fx:id="ParJour" mnemonicParsing="false" onAction="#ActiverParJour" text="Aujourd'hui" visible="false" />
+                  <Label text="Recherche" />
+                  <TextField fx:id="motCle">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </TextField>
+                  </children>
+                  <padding>
+                      <Insets left="30.0" />
+                  </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+              </HBox>
+         </children>
+      </VBox>
+            <TableView fx:id="TableAffichageDonnees" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="ColoneDameuses" prefWidth="75.0" text="Dameuse" />
+                    <TableColumn fx:id="ColoneDate" prefWidth="134.0" text="Date" />
+                    <TableColumn fx:id="ColoneHeure" prefWidth="133.0" text="Heure" />
+                    <TableColumn fx:id="ColoneLatitude" minWidth="110.0" prefWidth="210.0" text="Latitude" />
+                    <TableColumn fx:id="ColoneLongitude" minWidth="110.0" prefWidth="210.0" text="Longitude" />
+                </columns>
+            </TableView>
     </children>
 </VBox>

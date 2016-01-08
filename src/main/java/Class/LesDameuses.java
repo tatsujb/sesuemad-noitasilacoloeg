@@ -21,30 +21,31 @@ public class LesDameuses {
     }
 
     public void ajouterDameuse (Dameuse p_dameuse) throws IllegalArgumentException, IOException {
-        if (p_dameuse == null)
-            throw new IllegalArgumentException("Paramètre invalide, dameuse erronée");
+        if (p_dameuse != null) {
 
-        this.lesDameuses.put(p_dameuse.getNom(),p_dameuse);
-        p_dameuse.ecrireDansLhistorique();
+            this.lesDameuses.put(p_dameuse.getNom(), p_dameuse);
+            p_dameuse.ecrireDansLhistorique();
 
-        String adresseFichier="./src/Historiques/historiqueGeneral.txt";
-        File fich = new File(adresseFichier);
-        Path fichier = Paths.get(adresseFichier);
+            String adresseFichier = "./src/Historiques/historiqueGeneral.txt";
+            File fich = new File(adresseFichier);
+            Path fichier = Paths.get(adresseFichier);
 
-        if (!fich.exists()){
-            String message = "Historique Général\r\n\r\n";
-            Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
+            if (!fich.exists()) {
+                String message = "Historique Général\r\n\r\n";
+                Files.write(fichier, message.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.APPEND);
+            }
+
+            String message = p_dameuse.toString()+"\r\n\r\n";
+            Files.write(fichier, message.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.APPEND);
+
+
+            Date date = new Date();
+            String dateCourante = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE).format(date);
+
+            String heureCourante = new SimpleDateFormat("HH:mm:ss", Locale.FRANCE).format(date);
+
+            System.out.println(dateCourante + " : message reçu à " + heureCourante + " " + p_dameuse.getNom());
         }
-
-        Files.write(fichier,p_dameuse.toString().getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
-
-
-        Date date = new Date();
-        String dateCourante  = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE).format(date);
-
-        String heureCourante = new SimpleDateFormat("HH:mm:ss",Locale.FRANCE).format(date);
-
-        System.out.println(dateCourante+" : message reçu à "+heureCourante+" "+p_dameuse.getNom());
 
 
     }

@@ -26,6 +26,7 @@ public class Traitement {
             }
         }
         donnees.add(chaineTemporaire);
+        //System.out.println(chaineTemporaire);
         return donnees;
     }
 
@@ -62,7 +63,7 @@ public class Traitement {
     public void afficheDameuseDisponible(LesDameuses lesDameuses) {
         System.out.println("Voici les dameuses qui ont été en mouvement : ");
         for (Dameuse d : lesDameuses.getLesDameuses()){
-            System.out.println(d.getNom());
+            System.out.println(d.toString());
 
         }
     }

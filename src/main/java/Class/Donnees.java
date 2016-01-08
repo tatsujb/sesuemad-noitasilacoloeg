@@ -16,7 +16,8 @@ public class Donnees {
 
 
     public Donnees(List<String> p_donnees) {
-        if (p_donnees.size() == 9 && p_donnees.get(8) != null && p_donnees.get(8) != "null"){
+        //System.out.println(p_donnees.size());
+        if (p_donnees.size() == 9 && p_donnees.get(0) != null && p_donnees.get(0) != "null"){
             NumerisationMois mapMois = NumerisationMois.getInstance();
 
             this.date = p_donnees.get(2)+'/'+mapMois.returnMois(p_donnees.get(1))+'/'+p_donnees.get(5);
