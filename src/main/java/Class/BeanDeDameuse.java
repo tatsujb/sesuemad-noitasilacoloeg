@@ -16,19 +16,13 @@ public class BeanDeDameuse {
     private StringProperty dameuses;
     private StringProperty longitude;
     private StringProperty latitude;
-    //private StringProperty altitude;
-    //private StringProperty orientation;
     private StringProperty date;
     private StringProperty heure;
-
-    private Path fichier;
 
     public BeanDeDameuse() {
         dameuses = new SimpleStringProperty();
         longitude = new SimpleStringProperty();
         latitude = new SimpleStringProperty();
-        //altitude = new SimpleStringProperty();
-        //orientation = new SimpleStringProperty();
         date = new SimpleStringProperty();
         heure = new SimpleStringProperty();
     }
@@ -68,30 +62,6 @@ public class BeanDeDameuse {
     public void setLatitude(String latitude) {
         this.latitude.set(latitude);
     }
-/*
-    public String getAltitude() {
-        return altitude.get();
-    }
-
-    public StringProperty altitudeProperty() {
-        return altitude;
-    }
-
-    public void setAltitude(String altitude) {
-        this.altitude.set(altitude);
-    }
-
-    public String getOrientation() {
-        return orientation.get();
-    }
-
-    public StringProperty orientationProperty() {
-        return orientation;
-    }
-
-    public void setOrientation(String orientation) {
-        this.orientation.set(orientation);
-    }*/
 
     public String getDate() {
         return date.get();
@@ -121,8 +91,6 @@ public class BeanDeDameuse {
         this.setDameuses(l.get(1));
         this.setLatitude(l.get(9));
         this.setLongitude(l.get(12));
-        //this.setAltitude(l.get(3));
-        //this.setOrientation(l.get(4));
         this.setDate(l.get(3));
         this.setHeure(l.get(6));
     }

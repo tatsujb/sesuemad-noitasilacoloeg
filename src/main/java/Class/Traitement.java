@@ -26,7 +26,6 @@ public class Traitement {
             }
         }
         donnees.add(chaineTemporaire);
-        //System.out.println(chaineTemporaire);
         return donnees;
     }
 

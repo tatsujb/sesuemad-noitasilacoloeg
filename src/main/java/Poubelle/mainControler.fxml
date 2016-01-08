@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- xml headers and imports etc -->
+
+
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="487.0" prefWidth="789.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="Poubelle.MainController">
+
+        <!-- ... -->
+
+<fx:include fx:id="messageView" source="../../resources/interface.fxml" />
+
+        <!-- ... -->
+
+        </AnchorPane>

@@ -32,7 +32,6 @@ public class BeanRemplissage {
         do{
             List<String> liste=traitmnt.separeLesDonneesBean(fic.nextLine());
             if (liste.size()>5) {
-                //System.out.println(liste);
                 BeanDeDameuse beanDeDameuse = new BeanDeDameuse();
                 beanDeDameuse.setDonnees(liste);
                 beans.add(beanDeDameuse);
@@ -40,10 +39,6 @@ public class BeanRemplissage {
         }while (fic.hasNextLine());
         fic.close();
     }
-
-    /*public void filtrageBeanAujourdhui(){
-        beans.filtered(beanDeDameuse -> )
-    }*/
 
     public ObservableList<BeanDeDameuse> getBeans() {
         return beans;

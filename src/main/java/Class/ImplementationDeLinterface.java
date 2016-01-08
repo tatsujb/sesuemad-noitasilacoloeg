@@ -37,42 +37,18 @@ public class ImplementationDeLinterface {
     @FXML
     TableColumn<BeanDeDameuse, String> ColoneLatitude;
 
-    //@FXML
-    //TableColumn<BeanDeDameuse, String> ColoneAltitude;
-
-    //@FXML
-    //TableColumn<BeanDeDameuse, String> ColoneOrientation;
-
     @FXML
     TableColumn<BeanDeDameuse, String> ColoneDate;
 
     @FXML
     TableColumn<BeanDeDameuse, String> ColoneHeure;
 
-    /*private BeanRemplissage beanRemplissage;
-    public ImplementationDeLinterface() throws IOException {
-
-        beanRemplissage = new BeanRemplissage();
-    }
-    //http://stackoverflow.com/questions/32099724/javafx-tableview-doesnt-update-outside-of-initialize-method
-    private final Model model ;
-
-    public MainController(Model model) {
-        this.model = model ;
-    }*/
-
-
-
-    //http://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/
     @FXML
     public void initialize() throws IOException {
         setBeanRemplissage();
-        //FilteredList<BeanDeDameuse> filteredList = new FilteredList<>(beanRemplissage.getBeans(), p -> true);
-        ColoneDameuses.setCellValueFactory(param -> param.getValue().dameusesProperty()); //param -> celldata
+        ColoneDameuses.setCellValueFactory(param -> param.getValue().dameusesProperty());
         ColoneLongitude.setCellValueFactory(param -> param.getValue().longitudeProperty());
         ColoneLatitude.setCellValueFactory(param -> param.getValue().latitudeProperty());
-        //ColoneAltitude.setCellValueFactory(param -> param.getValue().altitudeProperty());
-        //ColoneOrientation.setCellValueFactory(param -> param.getValue().orientationProperty());
         ColoneDate.setCellValueFactory(param -> param.getValue().dateProperty());
         ColoneHeure.setCellValueFactory(param -> param.getValue().heureProperty());
     }
@@ -84,17 +60,11 @@ public class ImplementationDeLinterface {
         ObservableList<BeanDeDameuse> temp = truc.getBeans();
         FilteredList<BeanDeDameuse> BeanTrie = new FilteredList<>(temp, p -> true);
 
-
-        //truc = motCle.addEventFilter(KeyEvent.KEY_TYPED, motCle.textProperty().addListener(t );//motCle(textField.getText().toString())); //new EventHandler<KeyEvent>(),
-                /*new EventHandler<KeyEvent>() {
-                    public void handle(KeyEvent) { null };
-                });*/
-
         motCle.textProperty().addListener((observable, oldValue, newValue) -> {
             BeanTrie.setPredicate(beanDeDameusePredicate -> {
 
                 if (newValue == null || newValue.isEmpty()) {
-                    return true;
+                    return true; //tout les resultats
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
 
@@ -115,36 +85,5 @@ public class ImplementationDeLinterface {
 
         TableAffichageDonnees.setItems(resultatBeanTrie);
     }
-
-    public void ActiverParJour() throws IOException {
-        BeanRemplissage truc = new BeanRemplissage();
-        ObservableList<BeanDeDameuse> temp = truc.getBeans();
-        FilteredList<BeanDeDameuse> BeanTrie = new FilteredList<>(temp, p -> true);
-        //boolean coche = false;
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = new Date();
-        String dateDuJour = dateFormat.format(date);
-        ParJour.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            BeanTrie.setPredicate(beanDeDameusePredicate -> {
-                if (newValue && beanDeDameusePredicate.getHeure().contains(dateDuJour)) {
-                    return true;
-                }
-                return false;
-
-
-            });
-        });
-        SortedList<BeanDeDameuse> resultatBeanTrie = new SortedList<>(BeanTrie);
-
-        resultatBeanTrie.comparatorProperty().bind(TableAffichageDonnees.comparatorProperty());
-
-        TableAffichageDonnees.setItems(resultatBeanTrie);
-
-    }
-
-    public void sousRafraichir() throws IOException {
-        initialize();
-    }
-
 
 }

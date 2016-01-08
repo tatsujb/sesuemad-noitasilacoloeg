@@ -26,9 +26,6 @@ public class SerialCommunication implements SerialPortEventListener{
 	private InputStream input = null;
 	private OutputStream output = null;
 
-	//just a boolean flag that i use for enabling
-	//and disabling buttons depending on whether the program
-	//is connected to a serial port or not
 	private boolean bConnected = false;
 
 	//la valeur d'attente max
@@ -39,8 +36,7 @@ public class SerialCommunication implements SerialPortEventListener{
 	final static int DASH_ASCII = 45;
 	final static int NEW_LINE_ASCII = 10;
 
-	//a string for recording what goes on in the program
-	//this string is written to the GUI
+
 	String logText = "";
 
 	public void rechercheDesPorts()
@@ -51,7 +47,7 @@ public class SerialCommunication implements SerialPortEventListener{
 		{
 			CommPortIdentifier curPort = (CommPortIdentifier)ports.nextElement();
 
-			//get only serial ports
+			//recuperer tout les ports serial
 			if (curPort.getPortType() == CommPortIdentifier.PORT_SERIAL)
 			{
 				portMap.put(curPort.getName(), curPort);
@@ -61,21 +57,11 @@ public class SerialCommunication implements SerialPortEventListener{
 
 	public boolean initIOStream()
 	{
-		//return value for whether opening the streams is successful or not
 		boolean successful = false;
 
 		try {
 			input = serialPort.getInputStream();
 			output = serialPort.getOutputStream();
-			/*  // BLOCK COMMANDES AT ( ne fonctionne pas)
-
-			AT
-
-			AT+CPIN?
-
-			AT+CSCS="GSM"
-
-
 			try {
 				serialPort.setSerialPortParams(115200, serialPort.DATABITS_8, serialPort.STOPBITS_1, serialPort.PARITY_NONE);
 			} catch (UnsupportedCommOperationException e) {
@@ -83,10 +69,9 @@ public class SerialCommunication implements SerialPortEventListener{
 			}
 			input = serialPort.getInputStream();
 			output = serialPort.getOutputStream();
-			//writeData(0, 0);
 			System.out.println("connexion...");
 			byte[] b = new byte[400];
-			output.write("AT+CPIN?".getBytes());
+			output.write("AT+CPIN?".getBytes()); //rajouter le /r/b !
 			output.flush();
 			try {
 				Thread.sleep(800);
@@ -104,16 +89,13 @@ public class SerialCommunication implements SerialPortEventListener{
 			System.out.println(new String(b));
 			output.write("AT+CSCS=\"GSM\"".getBytes());
 			output.flush();
-			//input.read(b);
-			//System.out.println(new String(b));
+
 			output.write("AT+CMGF=1".getBytes());
 			output.flush();
-			//input.read(b);
-			//System.out.println(new String(b));
+
 			output.write("AT+CNMI=2,2,0,1,0".getBytes());
 			output.flush();
-			//input.read(b);
-			//System.out.println(new String(b));*/
+
 			return true;
 		}
 		catch (IOException e) {
@@ -139,17 +121,13 @@ public class SerialCommunication implements SerialPortEventListener{
 
 	public void disconnect()
 	{
-		//close the serial port
+		//ferme lle port serie
 		try
 		{
-			//writeData(0, 0);
-
 			serialPort.removeEventListener();
 			serialPort.close();
 			input.close();
 			output.close();
-			//setConnected(false);
-
 			logText = "Disconnected.";
 
 		}
@@ -215,22 +193,13 @@ public class SerialCommunication implements SerialPortEventListener{
 
 		try
 		{
-			//the method below returns an object of type CommPort
+			//methode qui retourne un objet de type comm port
 			commPort = selectedPortIdentifier.open("TigerControlPanel", TIMEOUT);
-			//the CommPort object can be casted to a SerialPort object
+			//cast vers object SerialPort
 			serialPort = (SerialPort)commPort;
-
-			//for controlling GUI elements
-
-			//logging
+			//log
 			logText = selectedPort + " opened successfully.";
 			System.out.println(logText);
-
-			//CODE ON SETTING BAUD RATE ETC OMITTED
-			//XBEE PAIR ASSUMED TO HAVE SAME SETTINGS ALREADY
-
-			//enables the controls on the GUI if a successful connection is made
-
 		}
 		catch (PortInUseException e)
 		{
