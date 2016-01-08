@@ -1,4 +1,4 @@
-package Class;
+package Poubelle;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,8 +17,8 @@ public class GenerateurDeMessage {
 
     private String getIdentifiantDameuse() {
         Random random = new Random();
-        int i = random.nextInt(IdentifiantDameuse.values().length);
-        return String.valueOf(IdentifiantDameuse.valueOf("DAM"+i)).toLowerCase();
+        int i = random.nextInt(Class.IdentifiantDameuse.values().length);
+        return String.valueOf(Class.IdentifiantDameuse.valueOf("DAM"+i)).toLowerCase();
     }
 
     private String getLongitude() {

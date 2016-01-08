@@ -1,9 +1,6 @@
 package Class;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Fabienne_2 on 14/11/2015.
@@ -17,12 +14,23 @@ public class Donnees {
     private String identifiantDameuse;
 
 
+
     public Donnees(List<String> p_donnees) {
-        this.date = p_donnees.get(0);
-        this.heure = p_donnees.get(1);
-        this.lattitude = p_donnees.get(2);
-        this.longitude = p_donnees.get(3);
-        this.identifiantDameuse = p_donnees.get(4);
+        //System.out.println(p_donnees.size());
+        if (p_donnees.size() == 9 && p_donnees.get(0) != null && p_donnees.get(0) != "null"){
+            NumerisationMois mapMois = NumerisationMois.getInstance();
+
+            this.date = p_donnees.get(2)+'/'+mapMois.returnMois(p_donnees.get(1))+'/'+p_donnees.get(5);
+            this.heure = p_donnees.get(3);
+            this.lattitude = p_donnees.get(6);
+            this.longitude = p_donnees.get(7);
+            if (p_donnees.get(8).length() == 1){
+                this.identifiantDameuse = "DAM0"+p_donnees.get(8);
+            }else{
+                this.identifiantDameuse = "DAM"+p_donnees.get(8);
+            }
+        }
+
     }
 
     public void setLattitude(String p_lattitude) {

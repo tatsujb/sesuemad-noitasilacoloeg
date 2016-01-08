@@ -1,10 +1,14 @@
-
+import Class.Dameuse;
+import Class.Donnees;
+import Class.Traitement;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-
 import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Created by Fabienne_2 on 14/11/2015.
@@ -47,6 +51,6 @@ public class DameuseTest {
 
     @Test
     public void testToString() {
-        assertEquals(this.dameuse.toString(), "Dameuse dam1 : 0 0 0 0 0");
+        assertEquals(this.dameuse.toString(), "Class.Dameuse dam1 : 0 0 0 0 0");
     }
 }

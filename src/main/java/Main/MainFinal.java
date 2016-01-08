@@ -1,70 +1,99 @@
 package Main;
 
 import Class.*;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.util.List;
 
 /**
  * Created by Fabienne_2 on 15/11/2015.
  */
-public class MainFinal {
+public class MainFinal extends Application {
+
+
+    private static boolean stop;
 
     public static void main(String[] args) throws IOException, InterruptedException {
-
-        final int nbIncrementation = 10;
-
-        GenerateurDeMessage generateurDeMessage = new GenerateurDeMessage();
+        MainController main = new MainController();
+        ImplementationDeLinterface impl = new ImplementationDeLinterface();
         LesDameuses lesDameuses = new LesDameuses();
         Traitement traitement = new Traitement();
 
-        simulationSMS(nbIncrementation, generateurDeMessage, lesDameuses, traitement);
-
-        Thread.sleep(3000);
-        int choix = JOptionPane.showConfirmDialog(null,"Voulez-vous afficher l'historique des dameuses ?");
-
-        choixHistorique(lesDameuses, traitement, choix);
-
-    }
-
-    private static void choixHistorique(LesDameuses lesDameuses, Traitement traitement, int choix) throws InterruptedException, IOException {
-        switch (choix){
-            case 0:
-                //oui
-                traitement.traitementEnCours(1000);
-                traitement.afficheDameuseDisponible(lesDameuses);
-
-                traitement.traitementEnCours(1000);
+        SerialCommunication communicator = new SerialCommunication();
+        communicator.connect();
+        if (communicator.initIOStream() == true) {
+            communicator.initListener();
+        }
+        System.out.println("Application launched");
+        System.out.println();
 
 
-                for (Dameuse d : lesDameuses.getLesDameuses()){
-                    d.lireLhistorique();
+        Thread thread = new Thread(() -> {
+            while (!stop) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                String sms=communicator.getLastSMS();
+                if (sms != ".") {
+
+                    //System.out.println(sms);
+
+                    List<String> message = traitement.traitement(sms);
+                    Dameuse dameuse = null;
+
+                    Donnees donnees = new Donnees(message);
+                    if(donnees.getIdentifiantDameuse()!=null) {
+                        try {
+                            dameuse = new Dameuse(donnees);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            lesDameuses.ajouterDameuse(dameuse);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                    //System.out.println(lesDameuses);
+                    traitement.afficheDameuseDisponible(lesDameuses);
+                    System.out.println();
                     System.out.println();
                 }
+            }
+        });
+        thread.start();
 
-                break;
-            default :
-                JOptionPane.showMessageDialog(null,"Merci de votre visite");
-        }
+        launch(args);
+
+        stop = true;
+
+        communicator.disconnect();
+    } //  JOptionPane.showMessageDialog(null,"Merci de votre visite");
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/interface.fxml"));
+        fxmlLoader.load();
+        //messageViewController= (MessageViewController) fxmlLoader.getController();
+        Parent root = fxmlLoader.getRoot();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+
+
     }
-
-    private static void simulationSMS(int nbIncrementation, GenerateurDeMessage generateurDeMessage, LesDameuses lesDameuses, Traitement traitement) throws IOException, InterruptedException {
-        int i = 0;
-
-        do {
-            String sms = generateurDeMessage.genereMessage();
-            List<String> message = traitement.traitement(sms);
-            Dameuse dameuse = new Dameuse(new Donnees(message));
-
-            lesDameuses.ajouterDameuse(dameuse);
-            i++;
-            Thread.sleep(1000);
-        } while (i < nbIncrementation);
-
-    }
-
-
 
 
 }

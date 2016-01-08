@@ -1,5 +1,4 @@
-package Main;
-import Class.GenerateurDeMessage;
+package Poubelle;
 /**
  * Created by Fabienne_2 on 16/11/2015.
  */

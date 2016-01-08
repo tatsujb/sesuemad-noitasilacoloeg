@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  * Created by Fabienne_2 on 14/11/2015.
- */
+*/
 public class Dameuse {
 
 
@@ -23,25 +23,29 @@ public class Dameuse {
 
 
     public Dameuse(Donnees donnees) throws IOException {
-        this.setDonnees(donnees);
-        creationFichier(this.getNom());
+        if (donnees.getIdentifiantDameuse()!=null) {
+            this.setDonnees(donnees);
+            creationFichier(this.getNom());
+        }else{
+            System.out.println("element null");
+        }
     }
 
     private void creationFichier(String nom) throws IOException {
 
-            File fich = new File("./src/Historiques");
-            if (!fich.exists()) {
-                fich.mkdir();
-            }
+        File fich = new File("./src/Historiques");
+        if (!fich.exists()) {
+            fich.mkdir();
+        }
 
-            this.fichier = Paths.get("./src/Historiques/" + nom + ".txt");
-            String message = "";
-            Files.write(fichier, message.getBytes(),StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
+        this.fichier = Paths.get("./src/Historiques/" + nom + ".txt");
+        String message = "";
+        Files.write(fichier, message.getBytes(),StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
 
-           fich = new File("./src/Historiques/" + nom + ".txt");
-            if (fich.length() == 0){
-                initialiserFichier();
-            }
+        fich = new File("./src/Historiques/" + nom + ".txt");
+        if (fich.length() == 0){
+            initialiserFichier();
+        }
     }
 
 
@@ -57,19 +61,19 @@ public class Dameuse {
 
     public void ecrireDansLhistorique () throws IOException {
 
-        String message = this.toString()+"\n";
+        String message = this.toString()+"\r\n\r\n";
         Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
     }
 
     public void initialiserFichier () throws IOException {
 
-        String message = "Historique " + this.getNom() + " \n\n";
+        String message = "Historique " + this.getNom() + " \r\n\r\n";
         Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
     }
 
     public void lireLhistorique () throws IOException {
 
-         Scanner fic = new Scanner(fichier.toFile());
+        Scanner fic = new Scanner(fichier.toFile());
         do{
             System.out.println(fic.nextLine());
         }while (fic.hasNextLine());
