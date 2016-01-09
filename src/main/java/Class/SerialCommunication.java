@@ -62,42 +62,7 @@ public class SerialCommunication implements SerialPortEventListener{
 		try {
 			input = serialPort.getInputStream();
 			output = serialPort.getOutputStream();
-			try {
-				serialPort.setSerialPortParams(115200, serialPort.DATABITS_8, serialPort.STOPBITS_1, serialPort.PARITY_NONE);
-			} catch (UnsupportedCommOperationException e) {
-				e.printStackTrace();
-			}
-			input = serialPort.getInputStream();
-			output = serialPort.getOutputStream();
-			System.out.println("connexion...");
-			byte[] b = new byte[400];
-			output.write("AT+CPIN?".getBytes()); //rajouter le /r/b !
-			output.flush();
-			try {
-				Thread.sleep(800);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			input.read(b);
-			output.flush();
-			try {
-				Thread.sleep(800);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			input.read(b);
-			System.out.println(new String(b));
-			output.write("AT+CSCS=\"GSM\"".getBytes());
-			output.flush();
-
-			output.write("AT+CMGF=1".getBytes());
-			output.flush();
-
-			output.write("AT+CNMI=2,2,0,1,0".getBytes());
-			output.flush();
-
 			return true;
-		}
 		catch (IOException e) {
 			logText = "I/O Streams failed to open. (" + e.toString() + ")";
 			System.out.println(logText);
