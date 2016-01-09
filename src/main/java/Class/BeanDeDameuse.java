@@ -8,9 +8,6 @@ import java.nio.file.Path;
 import java.util.List;
 
 
-/**
- * Created by tatsu on 27/12/2015.
- */
 public class BeanDeDameuse {
 
     private StringProperty dameuses;
