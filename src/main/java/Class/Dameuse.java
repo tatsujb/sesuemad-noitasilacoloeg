@@ -8,9 +8,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
 
-/**
- * Created by Fabienne_2 on 14/11/2015.
-*/
+
 public class Dameuse {
 
 
