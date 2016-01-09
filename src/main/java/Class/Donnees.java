@@ -2,9 +2,7 @@ package Class;
 
 import java.util.List;
 
-/**
- * Created by Fabienne_2 on 14/11/2015.
- */
+
 public class Donnees {
 
     private String lattitude;
