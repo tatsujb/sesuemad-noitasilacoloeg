@@ -14,9 +14,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by tatsu on 27/12/2015.
- */
+
 public class ImplementationDeLinterface {
 
     @FXML
