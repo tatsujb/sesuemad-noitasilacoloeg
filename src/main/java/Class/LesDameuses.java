@@ -9,9 +9,7 @@ import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-/**
- * Created by Fabienne_2 on 14/11/2015.
- */
+
 public class LesDameuses {
 
     private Map<String,Dameuse> lesDameuses;
