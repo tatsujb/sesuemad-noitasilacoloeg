@@ -23,9 +23,6 @@ public class ImplementationDeLinterface {
     TextField motCle;
 
     @FXML
-    CheckBox ParJour;
-
-    @FXML
     TableView<BeanDeDameuse> TableAffichageDonnees;
 
     @FXML
