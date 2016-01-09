@@ -71,14 +71,6 @@ public class Dameuse {
         Files.write(fichier,message.getBytes(), StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
     }
 
-    public void lireLhistorique () throws IOException {
-
-        Scanner fic = new Scanner(fichier.toFile());
-        do{
-            System.out.println(fic.nextLine());
-        }while (fic.hasNextLine());
-        fic.close();
-    }
 
     @Override
     public String toString() {
