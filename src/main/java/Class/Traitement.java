@@ -4,9 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-/**
- * Created by tatsu on 13/11/2015.
- */
 public class Traitement {
 
     public List<String> traitement(String p_message) {
