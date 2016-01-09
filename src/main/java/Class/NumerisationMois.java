@@ -3,9 +3,7 @@ package Class;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Fabienne_2 on 16/11/2015.
- */
+
 public class NumerisationMois {
     private static NumerisationMois instance;
 
