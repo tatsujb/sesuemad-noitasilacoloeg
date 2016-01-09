@@ -10,9 +10,6 @@ import java.util.List;
 import java.util.Scanner;
 
 
-/**
- * Created by tatsu on 27/12/2015.
- */
 public class BeanRemplissage {
 
     private Path fichier;
